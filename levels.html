@@ -10,27 +10,21 @@
       font-family: Arial, sans-serif;
       background: #111;
       color: white;
-      padding-top: 80px; /* Adjust to make space for fixed header */
+      padding-top: 80px; /* Make room for fixed header */
     }
 
+    /* Matching header style from homepage */
     header {
       position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
       width: 100%;
       background-color: black;
-      padding: 10px 20px;
+      padding: 10px 0;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    header .title {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      padding: 0 20px;
     }
 
     header h1 {
@@ -41,13 +35,15 @@
 
     header h2 {
       margin: 0;
-      font-size: 18px;
+      font-size: 24px;
       color: white;
     }
 
     nav {
       display: flex;
-      gap: 10px;
+      width: 200px;
+      justify-content: flex-start;
+      margin-right: 20px;
     }
 
     nav a {
@@ -55,6 +51,7 @@
       text-decoration: none;
       padding: 10px 20px;
       background-color: black;
+      margin: 0;
       border-radius: 5px;
       font-weight: bold;
       display: block;
@@ -106,9 +103,8 @@
 
   <!-- Header Bar -->
   <header>
-    <div class="title">
-      <h1>NOCLIP</h1>
-      <h2>VR</h2>
+    <div>
+      <h1>NOCLIP</h1><h2>VR</h2>
     </div>
     <nav>
       <a href="index.html">Home</a>
