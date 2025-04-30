@@ -14,38 +14,34 @@
       overflow-x: hidden;
       height: 100%;
     }
-    
-    /* Adjust header padding for smaller size */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: black;
-      padding: 5px 0; /* Reduced padding to make it smaller */
+      padding: 5px 0; /* Updated padding to match index.html header */
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 20px;
     }
-
     header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 24px;
       color: red;
     }
-
     header h2 {
       margin: 0;
-      font-size: 28px;
+      font-size: 24px;
       color: white;
     }
-
     nav {
       display: flex;
       width: 200px;
-      justify-content: flex-end;
+      justify-content: flex-start; /* Adjust to start alignment */
+      margin-right: 20px; /* Shift to the left */
     }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -57,12 +53,9 @@
       display: block;
       text-align: center;
     }
-
     nav a:hover {
       background-color: red;
     }
-
-    /* Content Styling */
     .content {
       padding: 120px 20px 40px;
       max-width: 1000px;
@@ -70,14 +63,12 @@
       text-align: center;
       color: black; /* Set text to black */
     }
-
     .content h1 {
       font-size: 100px;
       margin-bottom: 20px;
       text-transform: uppercase;
       -webkit-text-stroke: 2px black; /* Outline the text */
     }
-
     .content ul {
       list-style-type: none;
       padding: 0;
@@ -86,11 +77,9 @@
       text-align: left;
       margin-top: 20px;
     }
-
     .content li {
       padding: 8px 0; /* Slightly bigger padding */
     }
-
     .content li span {
       font-weight: bold;
     }
