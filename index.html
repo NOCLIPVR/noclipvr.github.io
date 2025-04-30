@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Noclip VR</title>
   <style>
     body {
@@ -79,26 +79,26 @@
       font-size: 18px;
       line-height: 1.6;
     }
-    .media-row {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 20px;
-      margin: 20px 0;
-    }
-    .media-row a img.discord-logo {
-      width: 120px; /* Larger size */
-      height: auto;
-    }
-    .media-row img.main-image {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 10px;
-    }
     .content video {
       width: 100%;
       max-width: 800px;
       margin: 20px 0;
+      border-radius: 10px;
+    }
+    .media-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .discord-link img {
+      width: 80px; /* Adjusted to medium size */
+      height: auto;
+    }
+    .main-image {
+      width: 100%;
+      max-width: 500px;
       border-radius: 10px;
     }
   </style>
@@ -125,9 +125,11 @@
     <h2>A Multiplayer Horror Experience</h2>
 
     <div class="media-row">
-      <a href="https://discord.gg/noclipvr" target="_blank">
-        <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="discord-logo">
+      <!-- Discord Link -->
+      <a href="https://discord.gg/noclipvr" target="_blank" class="discord-link">
+        <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo">
       </a>
+      <!-- Game Screenshot -->
       <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot" class="main-image">
     </div>
 
