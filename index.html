@@ -95,10 +95,16 @@
     /* New styling for Discord logo */
     .discord-logo {
       position: absolute;
-      top: 891px; /* Moved a tiny bit higher */
+      top: 891px; /* Position of the logo */
       left: 20px; /* Keep it on the left */
       width: 200px; /* Keep the size bigger */
       height: auto;
+      transition: transform 0.3s ease-in-out; /* Smooth animation */
+    }
+
+    /* Hover effect for Discord logo */
+    .discord-logo:hover {
+      transform: scale(1.2); /* Make the logo 20% bigger */
     }
   </style>
 </head>
