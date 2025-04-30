@@ -12,9 +12,7 @@
       background-size: cover;
       color: white;
       overflow-x: hidden;
-      height: 100%;
     }
-
     header {
       position: fixed;
       top: 0;
@@ -23,92 +21,75 @@
       padding: 10px 0;
       z-index: 1000;
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       padding: 0 20px;
     }
-
     header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 24px;
       color: red;
     }
-
     header h2 {
       margin: 0;
-      font-size: 28px;
+      font-size: 24px;
       color: white;
     }
-
     nav {
       display: flex;
-      justify-content: flex-start;
-      margin-left: auto;
-      margin-right: 20px; /* Shift buttons a little to the left */
+      width: 200px;
+      justify-content: flex-start;  /* Adjust to start alignment */
+      margin-right: 20px;  /* Shift to the left */
     }
-
     nav a {
       color: white;
       text-decoration: none;
       padding: 10px 20px;
       background-color: black;
-      margin: 0 10px;
+      margin: 0;
       border-radius: 5px;
       font-weight: bold;
       display: block;
       text-align: center;
     }
-
     nav a:hover {
       background-color: red;
     }
-
     .content {
       padding: 120px 20px 40px;
+      max-width: 1000px;
+      margin: auto;
       text-align: center;
-      color: black;
     }
-
     .content h1 {
-      font-size: 100px;
+      font-size: 60px;
       margin-bottom: 20px;
       text-transform: uppercase;
-      -webkit-text-stroke: 2px black;
+      -webkit-text-stroke: 2px black; /* Outline the text */
     }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%;
-      margin-top: 50px;
+    .content h1 span {
+      color: red;
     }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    .content h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: black;
     }
-
-    .description {
-      margin-top: 40px;
+    .content p {
       font-size: 18px;
       line-height: 1.6;
+    }
+    .content img {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    .content video {
+      width: 100%;
       max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .image-container {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .image-container img {
-      max-width: 50%;
-      height: auto;
+      margin: 20px 0;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -118,33 +99,33 @@
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
     <nav>
-      <a href="index.html">Home</a>
       <a href="staff.html">Staff</a>
       <a href="levels.html">Levels</a>
     </nav>
   </header>
 
   <div class="content">
-    <h1 style="font-size: 80px;">NOCLIP VR</h1>
-    <div class="video-container">
-      <iframe src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
+    <!-- "NOCLIP VR" Title above the video -->
+    <h1><span>NOCLIP</span> VR</h1>
+    
+    <!-- Video in the Center -->
+    <video controls>
+      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
-    <p class="description">
-      Noclip VR is a multiplayer horror experience with unique locomotion and proximity chat.
-    </p>
+    <!-- "A Multiplayer Horror Experience" below the video -->
+    <h2>A Multiplayer Horror Experience</h2>
 
-    <div class="image-container">
-      <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Image">
-    </div>
-
-    <p class="description">
-      Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The Game has many unique levels with different puzzles and entities.
-
+    <!-- Game Description -->
+    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
+    <p>
+      Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
+      <br><br>
       Invite your friends and noclip out of the frontrooms now!
-
+      <br><br>
       "If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms, where it's nothing but the stink of old moist carpet, the madness of mono-yellow, the endless background noise of fluorescent lights at maximum hum-buzz, and approximately six hundred million square miles of randomly segmented empty rooms to be trapped in.
-
+      <br><br>
       God save you if you hear something wandering around nearby, because it sure as hell has heard you."
     </p>
   </div>
