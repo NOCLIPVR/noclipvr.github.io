@@ -91,14 +91,13 @@
       margin: 20px 0;
       border-radius: 10px;
     }
-    .media-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-    }
-    .media-row img.discord-logo {
-      width: 80px; /* Adjusted for medium size */
+
+    /* New styling for Discord logo */
+    .discord-logo {
+      position: absolute;
+      top: 200px; /* Adjust top positioning to move the logo lower */
+      left: 20px; /* Adjust left positioning to move the logo to the left */
+      width: 100px; /* Medium size */
       height: auto;
     }
   </style>
@@ -127,17 +126,8 @@
     <!-- "A Multiplayer Horror Experience" below the video -->
     <h2>A Multiplayer Horror Experience</h2>
 
-    <!-- Media row containing Discord logo and Game Screenshot -->
-    <div class="media-row">
-      <!-- Discord logo with link -->
-      <a href="https://discord.gg/noclipvr" target="_blank">
-        <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="discord-logo">
-      </a>
-      <!-- Noclip VR Game Screenshot -->
-      <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
-    </div>
-
     <!-- Game Description -->
+    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
     <p>
       Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
       <br><br>
@@ -148,5 +138,9 @@
       God save you if you hear something wandering around nearby, because it sure as hell has heard you."
     </p>
   </div>
+
+  <!-- Discord logo placed at the left, lower down -->
+  <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="discord-logo">
+
 </body>
 </html>
