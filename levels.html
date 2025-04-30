@@ -3,18 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Levels - Noclip VR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
       background: #111;
       color: white;
-      padding-top: 70px; /* offset for fixed header */
+      padding-top: 80px; /* Adjust to make space for fixed header */
     }
 
     header {
@@ -31,6 +27,12 @@
       align-items: center;
     }
 
+    header .title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     header h1 {
       margin: 0;
       font-size: 24px;
@@ -38,8 +40,8 @@
     }
 
     header h2 {
-      margin: 0 0 0 10px;
-      font-size: 24px;
+      margin: 0;
+      font-size: 18px;
       color: white;
     }
 
@@ -66,7 +68,7 @@
     h1 {
       text-align: center;
       color: #ff0000;
-      margin: 30px 0;
+      margin-bottom: 30px;
     }
 
     .section {
@@ -104,8 +106,9 @@
 
   <!-- Header Bar -->
   <header>
-    <div style="display: flex; align-items: center;">
-      <h1>NOCLIP</h1><h2>VR</h2>
+    <div class="title">
+      <h1>NOCLIP</h1>
+      <h2>VR</h2>
     </div>
     <nav>
       <a href="index.html">Home</a>
@@ -123,12 +126,10 @@
       <span class="lethal">🔴</span> - Lethal. Multiple dangerous entities.
     </div>
 
-    <!-- LEVELS BELOW -->
-
     <div class="level">
       <h3>Level 0🟠</h3>
       <pre>The first level of the game, and what most of you imagine "The Backrooms" to be...
-find the door and all players must reach the exit to continue.</pre>
+Find the door and all players must reach the exit to continue.</pre>
     </div>
 
     <div class="level">
@@ -156,8 +157,9 @@ Avoid 3 roaming partygoers. Use fuses to repair the elevator.</pre>
 
     <div class="level">
       <h3>Level 5: "Terror Hotel🟠" & Boiler Room🔴</h3>
-      <pre>Terror hotel- Fix rotated paintings to open a safe, find the green key, lighter, and dynamite.
-Use them to blast open blocked stairs.  boiler room- turn all valves then find a keycard and use it to escape.</pre>
+      <pre>Terror hotel: Fix rotated paintings to open a safe, find the green key, lighter, and dynamite.
+Use them to blast open blocked stairs.
+Boiler room: Turn all valves then find a keycard and use it to escape.</pre>
     </div>
 
     <div class="level">
@@ -209,7 +211,7 @@ Mechanics:
 - Jailed players must be freed by teammates
 
 Keys/Fuses:
-- Keys the same colour as the doors unlocks them
+- Keys the same colour as the doors unlock them
 - Not all doors have a fuse behind them
 - Multiple stories to explore
 - Jail = game over if everyone is caught
