@@ -38,8 +38,8 @@
     nav {
       display: flex;
       width: 200px;
-      justify-content: flex-start;  /* Adjust to start alignment */
-      margin-right: 20px;  /* Shift to the left */
+      justify-content: flex-start;
+      margin-right: 20px;
     }
     nav a {
       color: white;
@@ -60,13 +60,12 @@
       max-width: 1000px;
       margin: auto;
       text-align: center;
-      position: relative;
     }
     .content h1 {
       font-size: 60px;
       margin-bottom: 20px;
       text-transform: uppercase;
-      -webkit-text-stroke: 2px black; /* Outline the text */
+      -webkit-text-stroke: 2px black;
     }
     .content h1 span {
       color: red;
@@ -94,15 +93,14 @@
     }
     .discord-icon {
       position: absolute;
-      left: -80px;  /* Positioned to the left of the image */
-      top: 40%;  /* Vertically align it beside the image */
-      width: 100px;  /* Increased size */
-      height: 100px;  /* Increased size */
+      left: -70px;  /* Position the icon to the left of the image */
+      top: 100%;  /* Move it further up, closer to the image */
+      width: 40px;  /* Make the icon smaller */
       cursor: pointer;
       transition: transform 0.3s;
     }
     .discord-icon:hover {
-      transform: scale(1.1);
+      transform: scale(1.1);  /* Slightly enlarge on hover */
     }
   </style>
 </head>
@@ -118,7 +116,6 @@
   </header>
 
   <div class="content">
-    <!-- "NOCLIP VR" Title above the video -->
     <h1><span>NOCLIP</span> VR</h1>
     
     <!-- Video in the Center -->
@@ -126,6 +123,11 @@
       <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+
+    <!-- Discord logo beside the image -->
+    <a href="https://discord.gg/noclipvr" target="_blank">
+      <img class="discord-icon" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo">
+    </a>
 
     <!-- "A Multiplayer Horror Experience" below the video -->
     <h2>A Multiplayer Horror Experience</h2>
@@ -141,11 +143,6 @@
       <br><br>
       God save you if you hear something wandering around nearby, because it sure as hell has heard you."
     </p>
-
-    <!-- Discord Icon -->
-    <a href="https://discord.gg/noclipvr" target="_blank">
-      <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" class="discord-icon" alt="Discord">
-    </a>
   </div>
 </body>
 </html>
