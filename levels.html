@@ -11,6 +11,48 @@
       color: white;
       padding: 60px 20px;
     }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: black;
+      padding: 5px 0; /* Matching padding from index.html */
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: red;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 24px;
+      color: white;
+    }
+    nav {
+      display: flex;
+      width: 200px;
+      justify-content: flex-start;
+      margin-right: 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: black;
+      margin: 0;
+      border-radius: 5px;
+      font-weight: bold;
+      display: block;
+      text-align: center;
+    }
+    nav a:hover {
+      background-color: red;
+    }
     h1 {
       text-align: center;
       color: #ff0000;
@@ -43,6 +85,18 @@
 </head>
 <body>
 
+  <!-- Header Bar -->
+  <header>
+    <div>
+      <h1>NOCLIP</h1><h2>VR</h2>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="staff.html">Staff</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
   <h1>Level Walkthroughs</h1>
 
   <div class="section">
