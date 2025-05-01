@@ -55,8 +55,7 @@
     nav a:hover {
       background-color: red;
     }
-
-    /* New Review Button Styling */
+    /* New Leave a Review button */
     #review-button {
       color: white;
       text-decoration: none;
@@ -229,8 +228,7 @@
       <a href="staff.html">Staff</a>
       <a href="levels.html">Levels</a>
     </nav>
-
-    <!-- "Leave a Review" Button centered -->
+    <!-- Leave a Review Button -->
     <a href="#" id="review-button">Leave a Review</a>
   </header>
 
@@ -240,12 +238,12 @@
 
     <!-- Video -->
     <video controls>
-      <source src="https://cdn.discordapp.com/attachments/1284740231941066825/1367233293027643596/Noclip_VR_Trailer.mp4" type="video/mp4">
+      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <!-- Screenshot -->
-    <img src="https://cdn.discordapp.com/attachments/1284740231941066825/1367233293027643596/Noclip_VR_Screenshot.png" alt="Noclip VR Game Screenshot">
+    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
 
     <h2>A Multiplayer Horror Experience</h2>
 
@@ -257,6 +255,16 @@
       "If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms..."
     </p>
   </div>
+
+  <!-- Discord Logo -->
+  <a href="https://discord.gg/noclipvr" target="_blank">
+    <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
+  </a>
+
+  <!-- Meta Logo -->
+  <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
+    <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
+  </a>
 
   <!-- Review Modal -->
   <div id="review-modal">
@@ -280,25 +288,16 @@
     </div>
   </div>
 
-  <!-- Discord Logo -->
-  <a href="https://discord.gg/noclipvr" target="_blank">
-    <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
-  </a>
-
-  <!-- Meta Logo -->
-  <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
-    <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
-  </a>
-
-  <!-- Script -->
   <script>
-    const webhookURL = "YOUR_DISCORD_WEBHOOK_URL_HERE"; // Replace this!
+    const webhookURL = "YOUR_DISCORD_WEBHOOK_URL_HERE"; // Replace with your webhook URL
 
+    // Show review modal
     document.getElementById("review-button").addEventListener("click", function (e) {
       e.preventDefault();
       document.getElementById("review-modal").style.display = "flex";
     });
 
+    // Close review modal
     function closeReview() {
       document.getElementById("review-modal").style.display = "none";
       document.getElementById("review-text").value = "";
@@ -324,6 +323,7 @@
       });
     }
 
+    // Submit the review and send it to Discord via webhook
     function submitReview() {
       const review = document.getElementById("review-text").value.trim();
       const nickname = document.getElementById("nickname").value.trim() || "Anonymous";
@@ -358,6 +358,5 @@
       });
     }
   </script>
-
 </body>
 </html>
