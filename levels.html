@@ -1,134 +1,205 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #111;
-  color: white;
-  padding-top: 80px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Levels - Noclip VR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: white;
+      padding-top: 80px;
+    }
 
-/* KEEPING HEADER SAME */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: black;
-  padding: 10px 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
+    /* KEEPING HEADER SAME */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: black;
+      padding: 10px 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 24px;
-  color: red;
-}
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: red;
+    }
 
-header h2 {
-  margin: 0;
-  font-size: 24px;
-  color: white;
-}
+    header h2 {
+      margin: 0;
+      font-size: 24px;
+      color: white;
+    }
 
-nav {
-  display: flex;
-  width: 200px;
-  justify-content: flex-start;
-  margin-right: 20px;
-}
+    nav {
+      display: flex;
+      width: 200px;
+      justify-content: flex-start;
+      margin-right: 20px;
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  background-color: black;
-  margin: 0;
-  border-radius: 5px;
-  font-weight: bold;
-  display: block;
-  text-align: center;
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: black;
+      margin: 0;
+      border-radius: 5px;
+      font-weight: bold;
+      display: block;
+      text-align: center;
+    }
 
-nav a:hover {
-  background-color: red;
-}
+    nav a:hover {
+      background-color: red;
+    }
 
-h1 {
-  text-align: center;
-  color: #ff3333;
-  font-size: 48px;
-  margin: 30px 0 50px;
-  letter-spacing: 2px;
-}
+    h1 {
+      text-align: center;
+      font-size: 48px;
+      margin: 30px 0 50px;
+      letter-spacing: 2px;
+    }
 
-.section {
-  max-width: 1000px;
-  margin: 0 auto 60px auto;
-  padding: 0 20px;
-}
+    .level-text {
+      color: red;
+    }
 
-.label {
-  font-size: 18px;
-  margin-bottom: 30px;
-  background: #222;
-  padding: 15px 20px;
-  border-left: 5px solid #ff0000;
-  border-radius: 6px;
-}
+    .walkthrough-text {
+      color: white;
+    }
 
-.safe { color: #00ff88; }
-.danger { color: #ffaa00; }
-.lethal { color: #ff4c4c; }
+    .section {
+      max-width: 1000px;
+      margin: 0 auto 60px auto;
+      padding: 0 20px;
+    }
 
-.level {
-  margin-top: 40px;
-  background-color: #ff0000; /* Red for the levels */
-  border-left: 4px solid #333;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(255, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
+    .label {
+      font-size: 18px;
+      margin-bottom: 30px;
+      background: #222;
+      padding: 15px 20px;
+      border-left: 5px solid #ff0000;
+      border-radius: 6px;
+    }
 
-.level:hover {
-  transform: translateY(-3px);
-}
+    .safe { color: #00ff88; }
+    .danger { color: #ffaa00; }
+    .lethal { color: #ff4c4c; }
 
-.level h3 {
-  margin-top: 0;
-  color: #ffffff; /* White color for the title */
-  font-size: 22px;
-  margin-bottom: 12px;
-}
+    .level {
+      margin-top: 40px;
+      background-color: #1a1a1a;
+      border-left: 4px solid #333;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
 
-pre {
-  white-space: pre-wrap;
-  background: #222;
-  padding: 16px;
-  border-radius: 6px;
-  color: #fff; /* White text for walkthrough */
-  font-size: 16px;
-  line-height: 1.6;
-  display: none;
-}
+    .level:hover {
+      transform: translateY(-3px);
+    }
 
-.level.active pre {
-  display: block;
-}
+    .level h3 {
+      margin-top: 0;
+      color: #ffcccc;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 36px;
-  }
+    pre {
+      white-space: pre-wrap;
+      background: #222;
+      padding: 16px;
+      border-radius: 6px;
+      color: #ddd;
+      font-size: 16px;
+      line-height: 1.6;
+      display: none;
+    }
 
-  .label, .level {
-    font-size: 16px;
-  }
+    .level.active pre {
+      display: block;
+    }
 
-  pre {
-    font-size: 15px;
-  }
-}
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .label, .level {
+        font-size: 16px;
+      }
+
+      pre {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Bar (UNCHANGED) -->
+  <header>
+    <div>
+      <h1>NOCLIP</h1><h2>VR</h2>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="staff.html">Staff</a>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
+  <h1><span class="level-text">Level</span> <span class="walkthrough-text">Walkthroughs</span></h1>
+
+  <!-- Main Section -->
+  <div class="section">
+    <div class="label">
+      <span class="safe">🟢 Safe</span> — No dangerous entities. <br>
+      <span class="danger">🟠 Dangerous</span> — Single dangerous entity. <br>
+      <span class="lethal">🔴 Lethal</span> — Multiple dangerous entities.
+    </div>
+
+    <!-- Levels -->
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 0 🟠</h3>
+      <pre>The first level of the game, and what most of you imagine "The Backrooms" to be...</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 1: "Habitable Zone" 🟠</h3>
+      <pre>You spawn in a pillar-filled space... Find the key, open the right door, escape.</pre>
+    </div>
+
+    <!-- Add other levels here -->
+
+  </div>
+
+  <script>
+    function toggleDescription(level) {
+      // Close all levels
+      const allLevels = document.querySelectorAll('.level');
+      allLevels.forEach(lvl => {
+        if (lvl !== level) {
+          lvl.classList.remove('active');
+        }
+      });
+
+      // Toggle the clicked level
+      level.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
