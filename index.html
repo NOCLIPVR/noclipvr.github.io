@@ -13,78 +13,87 @@
       color: white;
       overflow-x: hidden;
     }
+
     header {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: black;
-      padding: 10px 0;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 20px;
     }
+
     header h1 {
       margin: 0;
       font-size: 24px;
       color: red;
     }
+
     header h2 {
       margin: 0;
       font-size: 24px;
       color: white;
     }
+
     nav {
       display: flex;
-      width: 200px;
-      justify-content: flex-start;
-      margin-right: 20px;
+      gap: 10px;
+      align-items: center;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       padding: 10px 20px;
       background-color: black;
-      margin: 0;
       border-radius: 5px;
       font-weight: bold;
-      display: block;
       text-align: center;
     }
+
     nav a:hover {
       background-color: red;
     }
+
     .content {
       padding: 120px 20px 40px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
     }
+
     .content h1 {
       font-size: 60px;
       margin-bottom: 20px;
       text-transform: uppercase;
       -webkit-text-stroke: 2px black;
     }
+
     .content h1 span {
       color: red;
     }
+
     .content h2 {
       font-size: 32px;
       margin-bottom: 20px;
       color: black;
     }
+
     .content p {
       font-size: 18px;
       line-height: 1.6;
     }
+
     .content img {
       width: 100%;
       max-width: 500px;
       margin: 20px 0;
       border-radius: 10px;
     }
+
     .content video {
       width: 100%;
       max-width: 800px;
@@ -92,7 +101,6 @@
       border-radius: 10px;
     }
 
-    /* Styling for both logos */
     .logo {
       position: absolute;
       bottom: 20px;
@@ -113,7 +121,6 @@
       transform: scale(1.2);
     }
 
-    /* MOBILE & TABLET STYLES */
     @media only screen and (max-width: 768px) {
       .logo {
         position: static;
@@ -126,6 +133,54 @@
         margin-bottom: 10px;
       }
     }
+
+    /* Modal styles */
+    #review-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #review-modal .modal-box {
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    #review-modal textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      resize: none;
+    }
+
+    #review-modal button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #review-modal .submit-btn {
+      background: red;
+      color: white;
+    }
+
+    #review-modal .cancel-btn {
+      background: black;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -135,6 +190,7 @@
     </div>
     <nav>
       <a href="staff.html">Staff</a>
+      <a href="#" id="review-button">Leave a Review</a>
       <a href="levels.html">Levels</a>
     </nav>
   </header>
@@ -143,33 +199,83 @@
     <h1><span>NOCLIP</span> VR</h1>
 
     <video controls>
-      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
+      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <h2>A Multiplayer Horror Experience</h2>
 
-    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
+    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png" alt="Noclip VR Game Screenshot">
     <p>
       Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
       <br><br>
       Invite your friends and noclip out of the frontrooms now!
       <br><br>
-      "If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms, where it's nothing but the stink of old moist carpet, the madness of mono-yellow, the endless background noise of fluorescent lights at maximum hum-buzz, and approximately six hundred million square miles of randomly segmented empty rooms to be trapped in.
-      <br><br>
-      God save you if you hear something wandering around nearby, because it sure as hell has heard you."
+      "If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms..."
     </p>
   </div>
 
-  <!-- Discord logo clickable link -->
+  <!-- Review Modal -->
+  <div id="review-modal">
+    <div class="modal-box">
+      <h2>Leave a Review</h2>
+      <textarea id="review-text" rows="6" placeholder="Write your review here..."></textarea>
+      <br>
+      <button class="submit-btn" onclick="submitReview()">Submit</button>
+      <button class="cancel-btn" onclick="closeReview()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Discord logo -->
   <a href="https://discord.gg/noclipvr" target="_blank">
     <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
   </a>
 
-  <!-- Meta logo clickable link -->
+  <!-- Meta logo -->
   <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
     <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
   </a>
 
+  <!-- JS Script -->
+  <script>
+    const webhookURL = "YOUR_DISCORD_WEBHOOK_URL_HERE"; // Replace this!
+
+    document.getElementById("review-button").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementById("review-modal").style.display = "flex";
+    });
+
+    function closeReview() {
+      document.getElementById("review-modal").style.display = "none";
+    }
+
+    function submitReview() {
+      const review = document.getElementById("review-text").value.trim();
+      if (!review) {
+        alert("Please enter a review first.");
+        return;
+      }
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: `📝 **New Review Submitted:**\n${review}`
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Review submitted successfully!");
+          document.getElementById("review-text").value = "";
+          closeReview();
+        } else {
+          alert("Failed to send review. Try again later.");
+        }
+      })
+      .catch(() => {
+        alert("An error occurred. Please try again.");
+      });
+    }
+  </script>
 </body>
 </html>
