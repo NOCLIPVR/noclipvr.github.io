@@ -38,8 +38,8 @@
     nav {
       display: flex;
       width: 200px;
-      justify-content: flex-start;  /* Adjust to start alignment */
-      margin-right: 20px;  /* Shift to the left */
+      justify-content: flex-start;
+      margin-right: 20px;
     }
     nav a {
       color: white;
@@ -65,7 +65,7 @@
       font-size: 60px;
       margin-bottom: 20px;
       text-transform: uppercase;
-      -webkit-text-stroke: 2px black; /* Outline the text */
+      -webkit-text-stroke: 2px black;
     }
     .content h1 span {
       color: red;
@@ -98,22 +98,33 @@
       bottom: 20px;
       width: 200px;
       height: auto;
-      transition: transform 0.3s ease-in-out; /* Smooth animation */
+      transition: transform 0.3s ease-in-out;
     }
 
-    /* Position for Discord logo (left side) */
     .discord-logo {
-      left: 20px; /* Position on the left */
+      left: 20px;
     }
 
-    /* Position for Meta logo (right side) */
     .meta-logo {
-      right: 20px; /* Position on the right */
+      right: 20px;
     }
 
-    /* Hover effect for both logos */
     .logo:hover {
-      transform: scale(1.2); /* Make the logo 20% bigger */
+      transform: scale(1.2);
+    }
+
+    /* MOBILE & TABLET STYLES */
+    @media only screen and (max-width: 768px) {
+      .logo {
+        position: static;
+        display: block;
+        margin: 20px auto 0;
+        width: 120px;
+      }
+
+      .discord-logo, .meta-logo {
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
@@ -129,19 +140,15 @@
   </header>
 
   <div class="content">
-    <!-- "NOCLIP VR" Title above the video -->
     <h1><span>NOCLIP</span> VR</h1>
-    
-    <!-- Video in the Center -->
+
     <video controls>
       <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
-    <!-- "A Multiplayer Horror Experience" below the video -->
     <h2>A Multiplayer Horror Experience</h2>
 
-    <!-- Game Description -->
     <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
     <p>
       Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
