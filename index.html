@@ -92,18 +92,27 @@
       border-radius: 10px;
     }
 
-    /* New styling for Meta logo */
-    .meta-logo {
+    /* Styling for both logos */
+    .logo {
       position: absolute;
-      top: 891px; /* Position of the logo on the right side */
-      right: 20px; /* Align to the right */
-      width: 200px; /* Keep the size bigger */
+      bottom: 20px;
+      width: 200px;
       height: auto;
       transition: transform 0.3s ease-in-out; /* Smooth animation */
     }
 
-    /* Hover effect for Meta logo */
-    .meta-logo:hover {
+    /* Position for Discord logo (left side) */
+    .discord-logo {
+      left: 20px; /* Position on the left */
+    }
+
+    /* Position for Meta logo (right side) */
+    .meta-logo {
+      right: 20px; /* Position on the right */
+    }
+
+    /* Hover effect for both logos */
+    .logo:hover {
       transform: scale(1.2); /* Make the logo 20% bigger */
     }
   </style>
@@ -145,9 +154,14 @@
     </p>
   </div>
 
+  <!-- Discord logo clickable link -->
+  <a href="https://discord.gg/noclipvr" target="_blank">
+    <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
+  </a>
+
   <!-- Meta logo clickable link -->
   <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
-    <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="meta-logo">
+    <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
   </a>
 
 </body>
