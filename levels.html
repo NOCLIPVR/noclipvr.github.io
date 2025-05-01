@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Levels - Noclip VR</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
       color: white;
-      padding-top: 80px; /* Make room for fixed header */
+      padding-top: 80px;
     }
 
-    /* Matching header style from homepage */
+    /* KEEPING HEADER SAME */
     header {
       position: fixed;
       top: 0;
@@ -64,44 +64,80 @@
 
     h1 {
       text-align: center;
-      color: #ff0000;
-      margin-bottom: 30px;
+      color: #ff3333;
+      font-size: 48px;
+      margin: 30px 0 50px;
+      letter-spacing: 2px;
     }
 
     .section {
-      max-width: 900px;
-      margin: 0 auto 40px auto;
+      max-width: 1000px;
+      margin: 0 auto 60px auto;
       padding: 0 20px;
     }
 
     .label {
       font-size: 18px;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
+      background: #222;
+      padding: 15px 20px;
+      border-left: 5px solid #ff0000;
+      border-radius: 6px;
     }
 
-    .safe { color: #00ff00; }
+    .safe { color: #00ff88; }
     .danger { color: #ffaa00; }
-    .lethal { color: #ff0000; }
+    .lethal { color: #ff4c4c; }
 
     .level {
-      margin-top: 30px;
+      margin-top: 40px;
+      background-color: #1a1a1a;
+      border-left: 4px solid #333;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .level:hover {
+      transform: translateY(-3px);
     }
 
     .level h3 {
-      color: #f2f2f2;
+      margin-top: 0;
+      color: #ffcccc;
+      font-size: 22px;
+      margin-bottom: 12px;
     }
 
     pre {
       white-space: pre-wrap;
       background: #222;
-      padding: 15px;
-      border-radius: 5px;
+      padding: 16px;
+      border-radius: 6px;
+      color: #ddd;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .label, .level {
+        font-size: 16px;
+      }
+
+      pre {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header Bar -->
+  <!-- Header Bar (UNCHANGED) -->
   <header>
     <div>
       <h1>NOCLIP</h1><h2>VR</h2>
@@ -112,85 +148,87 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
+  <!-- Page Title -->
   <h1>Level Walkthroughs</h1>
 
+  <!-- Main Section -->
   <div class="section">
     <div class="label">
-      <span class="safe">🟢</span> - Safe. No dangerous entities. <br>
-      <span class="danger">🟠</span> - Dangerous. Single dangerous entity. <br>
-      <span class="lethal">🔴</span> - Lethal. Multiple dangerous entities.
+      <span class="safe">🟢 Safe</span> — No dangerous entities. <br>
+      <span class="danger">🟠 Dangerous</span> — Single dangerous entity. <br>
+      <span class="lethal">🔴 Lethal</span> — Multiple dangerous entities.
     </div>
 
+    <!-- Levels -->
     <div class="level">
-      <h3>Level 0🟠</h3>
+      <h3>Level 0 🟠</h3>
       <pre>The first level of the game, and what most of you imagine "The Backrooms" to be...
 Find the door and all players must reach the exit to continue.</pre>
     </div>
 
     <div class="level">
-      <h3>Level 1: "Habitable Zone🟠"</h3>
+      <h3>Level 1: "Habitable Zone" 🟠</h3>
       <pre>You spawn in a pillar-filled space...
 Find the key, open the right door, escape.</pre>
     </div>
 
     <div class="level">
-      <h3>Level 2: "Pipe Dreams🟠"</h3>
+      <h3>Level 2: "Pipe Dreams" 🟠</h3>
       <pre>Follow the pipes on your left.
 Get to the elevator quickly—bacteria spawns if you wait too long.</pre>
     </div>
 
     <div class="level">
-      <h3>Level Fun🔴</h3>
+      <h3>Level Fun 🔴</h3>
       <pre>Find keys and unlock matching doors to get fuses.
 Avoid 3 roaming partygoers. Use fuses to repair the elevator.</pre>
     </div>
 
     <div class="level">
-      <h3>Level 3: "Electrical Station🟢"</h3>
+      <h3>Level 3: "Electrical Station" 🟢</h3>
       <pre>Find buttons to unlock areas, get a keycard, and activate the next area.</pre>
     </div>
 
     <div class="level">
-      <h3>Level 5: "Terror Hotel🟠" & Boiler Room🔴</h3>
+      <h3>Level 5: "Terror Hotel" 🟠 & Boiler Room 🔴</h3>
       <pre>Terror hotel: Fix rotated paintings to open a safe, find the green key, lighter, and dynamite.
 Use them to blast open blocked stairs.
 Boiler room: Turn all valves then find a keycard and use it to escape.</pre>
     </div>
 
     <div class="level">
-      <h3>Level 4: "Abandoned Office🟢"</h3>
+      <h3>Level 4: "Abandoned Office" 🟢</h3>
       <pre>Find 3 digits and use the keypad to escape. Try all combinations (6/9 mixups).</pre>
     </div>
 
     <div class="level">
-      <h3>Level 8: "Cave Systems🟠"</h3>
+      <h3>Level 8: "Cave Systems" 🟠</h3>
       <pre>Explore until you find the lit exit elevator. All players must reach it.</pre>
     </div>
 
     <div class="level">
-      <h3>Level ! : "Run For Your Life🔴"</h3>
+      <h3>Level ! : "Run For Your Life" 🔴</h3>
       <pre>Run.</pre>
     </div>
 
     <div class="level">
-      <h3>Level 974: "Kitty's House🟢"</h3>
+      <h3>Level 974: "Kitty's House" 🟢</h3>
       <pre>Find and give 4 plushies to Kitty at the hallway door to continue.</pre>
     </div>
 
     <div class="level">
-      <h3>Level 37: "Sublimity" (Poolrooms)🟢</h3>
+      <h3>Level 37: "Sublimity" (Poolrooms) 🟢</h3>
       <pre>Find the elevator. There are 2 possible spawn locations.</pre>
     </div>
 
     <div class="level">
-      <h3>The End🔴</h3>
+      <h3>The End 🔴</h3>
       <pre>Find 3 digits, enter them into the computer. Avoid blind entities.
 Try all combinations and consider 6 ↔ 9 swaps.</pre>
     </div>
 
     <div class="level">
-      <h3>Level 9223372036854775807🟢</h3>
+      <h3>Level 9223372036854775807 🟢</h3>
       <pre>Jump off the stairs to fall back to the lobby.
 (Fun fact: this number is the 64-bit integer limit!)</pre>
     </div>
@@ -219,6 +257,5 @@ Strategy:
       </pre>
     </div>
   </div>
-
 </body>
 </html>
