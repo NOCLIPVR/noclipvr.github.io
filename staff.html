@@ -15,12 +15,28 @@
       height: 100%;
     }
 
+    /* CSS Media Query for Mobile and Tablets */
+    @media (max-width: 1024px) {
+      /* Mobile and Tablet styles */
+      .eerie-figure {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+
     /* CSS Media Query for PC */
-    @media (min-width: 1024px) {
+    @media (min-width: 1025px) {
       /* PC only styles */
       .eerie-figure {
         position: absolute;
-        right: 40px; /* Move it slightly to the left */
+        right: 40px; /* Keep it on the right side for PC */
         top: 50%;
         transform: translateY(-50%);
         font-size: 24px;
@@ -208,7 +224,7 @@
     document.body.addEventListener('click', playSound);
   </script>
 
-  <!-- Eerie "Press Me" text on the right side of the page -->
+  <!-- Eerie "Press Me" text -->
   <div class="eerie-figure">Press Me</div>
 
 </body>
