@@ -8,20 +8,25 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Update background image */
       background: url('https://cdn.discordapp.com/attachments/1222997344690372628/1367567914038726686/Screenshot_2025-05-01_192349.png?ex=68150e5e&is=6813bcde&hm=f415a8e3f63e61c3c8c3340562ff0f2ea3dc502f92a5cf0af8dec26ab7f3a58b&') no-repeat center center fixed;
       background-size: cover;
       color: white;
       overflow-x: hidden;
       height: 100%;
-      cursor: pointer; /* Set cursor to pointer for clickability */
     }
 
     /* CSS Media Query for PC */
     @media (min-width: 1024px) {
       /* PC only styles */
-      body {
-        cursor: pointer; /* Make sure the click cursor is visible on PC */
+      .eerie-figure {
+        position: absolute;
+        right: 20px; /* Position it on the right side */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 200px;
+        height: 200px;
+        background-color: rgba(0, 0, 0, 0.7);
+        cursor: pointer; /* Make it clickable */
       }
     }
 
@@ -123,7 +128,7 @@
     }
   </style>
 </head>
-<body onclick="playSound()">
+<body>
   <header>
     <div>
       <h1>NOCLIP</h1><h2>VR</h2>
@@ -189,14 +194,21 @@
   <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto"></audio>
 
   <script>
-    // JavaScript function to play the sound when the background is clicked
-    function playSound() {
-      // Check if the screen width is large enough for PC (desktop or laptop)
-      if (window.innerWidth >= 1024) {
+    // JavaScript function to play the sound when the eerie figure is clicked
+    function playSound(event) {
+      // Check if the click is on the eerie figure
+      if (event.target.classList.contains('eerie-figure')) {
         var audio = document.getElementById('eerieSound');
         audio.play();
       }
     }
+
+    // Add event listener for click event
+    document.body.addEventListener('click', playSound);
   </script>
+
+  <!-- Eerie black figure on the right side of the page -->
+  <div class="eerie-figure"></div>
+
 </body>
 </html>
