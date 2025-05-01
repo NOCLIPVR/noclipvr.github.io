@@ -24,9 +24,17 @@
         top: 50%;
         transform: translateY(-50%);
         width: 200px;
-        height: 200px;
+        height: 100px;
         background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: bold;
         cursor: pointer; /* Make it clickable */
+        border-radius: 10px;
       }
     }
 
@@ -207,8 +215,8 @@
     document.body.addEventListener('click', playSound);
   </script>
 
-  <!-- Eerie black figure on the right side of the page -->
-  <div class="eerie-figure"></div>
+  <!-- Eerie "Press Me" text on the right side of the page -->
+  <div class="eerie-figure">Press Me</div>
 
 </body>
 </html>
