@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noclip VR</title>
   <style>
     body {
@@ -13,76 +13,63 @@
       color: white;
       overflow-x: hidden;
     }
-
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: black;
-      padding: 0 20px;
       position: fixed;
       top: 0;
       width: 100%;
+      background-color: black;
+      padding: 10px 0;
       z-index: 1000;
-    }
-
-    .logo-title {
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      padding: 0 20px;
     }
-
-    .logo-title h1 {
+    header h1 {
       margin: 0;
       font-size: 24px;
       color: red;
     }
-
-    .logo-title h2 {
+    header h2 {
       margin: 0;
       font-size: 24px;
       color: white;
     }
-
-    nav.nav-bar {
-      position: relative;
-      flex: 1;
+    nav {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 200px;
+      justify-content: flex-start;
+      margin-right: 20px;
     }
-
-    .center-link {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+    nav a {
       color: white;
       text-decoration: none;
       padding: 10px 20px;
       background-color: black;
+      margin: 0;
       border-radius: 5px;
       font-weight: bold;
+      display: block;
+      text-align: center;
     }
-
-    .center-link:hover {
+    nav a:hover {
       background-color: red;
     }
 
-    .right-links {
-      margin-left: auto;
-      display: flex;
-      gap: 10px;
-    }
-
-    .right-links a {
+    /* New Review Button Styling */
+    #review-button {
       color: white;
       text-decoration: none;
       padding: 10px 20px;
       background-color: black;
+      margin: 0;
       border-radius: 5px;
       font-weight: bold;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
-
-    .right-links a:hover {
+    #review-button:hover {
       background-color: red;
     }
 
@@ -92,36 +79,30 @@
       margin: auto;
       text-align: center;
     }
-
     .content h1 {
       font-size: 60px;
       margin-bottom: 20px;
       text-transform: uppercase;
       -webkit-text-stroke: 2px black;
     }
-
     .content h1 span {
       color: red;
     }
-
     .content h2 {
       font-size: 32px;
       margin-bottom: 20px;
       color: black;
     }
-
     .content p {
       font-size: 18px;
       line-height: 1.6;
     }
-
     .content img {
       width: 100%;
       max-width: 500px;
       margin: 20px 0;
       border-radius: 10px;
     }
-
     .content video {
       width: 100%;
       max-width: 800px;
@@ -129,6 +110,7 @@
       border-radius: 10px;
     }
 
+    /* Styling for both logos */
     .logo {
       position: absolute;
       bottom: 20px;
@@ -149,6 +131,7 @@
       transform: scale(1.2);
     }
 
+    /* MOBILE & TABLET STYLES */
     @media only screen and (max-width: 768px) {
       .logo {
         position: static;
@@ -159,21 +142,6 @@
 
       .discord-logo, .meta-logo {
         margin-bottom: 10px;
-      }
-
-      nav.nav-bar {
-        flex-direction: column;
-      }
-
-      .center-link {
-        position: static;
-        transform: none;
-        margin: 10px 0;
-      }
-
-      .right-links {
-        justify-content: center;
-        margin: 10px 0;
       }
     }
 
@@ -254,17 +222,16 @@
 
   <!-- Header -->
   <header>
-    <div class="logo-title">
+    <div>
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
-
-    <nav class="nav-bar">
-      <a href="#" id="review-button" class="center-link">Leave a Review</a>
-      <div class="right-links">
-        <a href="staff.html">Staff</a>
-        <a href="levels.html">Levels</a>
-      </div>
+    <nav>
+      <a href="staff.html">Staff</a>
+      <a href="levels.html">Levels</a>
     </nav>
+
+    <!-- "Leave a Review" Button centered -->
+    <a href="#" id="review-button">Leave a Review</a>
   </header>
 
   <!-- Main Content -->
