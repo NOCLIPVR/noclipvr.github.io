@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Noclip VR</title>
   <style>
     body {
@@ -15,46 +15,74 @@
     }
 
     header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: black;
+      padding: 0 20px;
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: black;
       z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
     }
 
-    header h1 {
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-title h1 {
       margin: 0;
       font-size: 24px;
       color: red;
     }
 
-    header h2 {
+    .logo-title h2 {
       margin: 0;
       font-size: 24px;
       color: white;
     }
 
-    nav {
+    nav.nav-bar {
+      position: relative;
+      flex: 1;
       display: flex;
-      gap: 10px;
+      justify-content: center;
       align-items: center;
     }
 
-    nav a {
+    .center-link {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       color: white;
       text-decoration: none;
       padding: 10px 20px;
       background-color: black;
       border-radius: 5px;
       font-weight: bold;
-      text-align: center;
     }
 
-    nav a:hover {
+    .center-link:hover {
+      background-color: red;
+    }
+
+    .right-links {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .right-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: black;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .right-links a:hover {
       background-color: red;
     }
 
@@ -132,6 +160,21 @@
       .discord-logo, .meta-logo {
         margin-bottom: 10px;
       }
+
+      nav.nav-bar {
+        flex-direction: column;
+      }
+
+      .center-link {
+        position: static;
+        transform: none;
+        margin: 10px 0;
+      }
+
+      .right-links {
+        justify-content: center;
+        margin: 10px 0;
+      }
     }
 
     /* Modal styles */
@@ -184,17 +227,23 @@
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <div>
+    <div class="logo-title">
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
-    <nav>
-      <a href="staff.html">Staff</a>
-      <a href="#" id="review-button">Leave a Review</a>
-      <a href="levels.html">Levels</a>
+
+    <nav class="nav-bar">
+      <a href="#" id="review-button" class="center-link">Leave a Review</a>
+      <div class="right-links">
+        <a href="staff.html">Staff</a>
+        <a href="levels.html">Levels</a>
+      </div>
     </nav>
   </header>
 
+  <!-- Main Content -->
   <div class="content">
     <h1><span>NOCLIP</span> VR</h1>
 
@@ -206,6 +255,7 @@
     <h2>A Multiplayer Horror Experience</h2>
 
     <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png" alt="Noclip VR Game Screenshot">
+
     <p>
       Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
       <br><br>
@@ -226,17 +276,17 @@
     </div>
   </div>
 
-  <!-- Discord logo -->
+  <!-- Discord Logo -->
   <a href="https://discord.gg/noclipvr" target="_blank">
     <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
   </a>
 
-  <!-- Meta logo -->
+  <!-- Meta Logo -->
   <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
     <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
   </a>
 
-  <!-- JS Script -->
+  <!-- Script -->
   <script>
     const webhookURL = "YOUR_DISCORD_WEBHOOK_URL_HERE"; // Replace this!
 
@@ -277,5 +327,6 @@
       });
     }
   </script>
+
 </body>
 </html>
