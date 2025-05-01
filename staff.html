@@ -15,39 +15,40 @@
       height: 100%;
     }
 
-    /* Mobile and tablet styles */
-    @media (max-width: 1024px) {
-      .press-me {
-        position: relative;
-        margin-top: 30px; /* Adjust this value for better positioning */
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-        padding: 10px 20px;
-        background-color: black;
-        border-radius: 5px;
-        width: 100%;
-        z-index: 1000;
-      }
-    }
-
-    /* PC styles */
+    /* PC Only Styles */
     @media (min-width: 1025px) {
-      .press-me {
-        position: absolute;
-        right: 40px; /* Keep it on the right side for PC */
+      .eerie-figure {
+        position: fixed;
+        right: 40px;
         top: 50%;
         transform: translateY(-50%);
         font-size: 24px;
         font-weight: bold;
         color: white;
         cursor: pointer;
-        padding: 10px 20px;
-        background-color: black;
-        border-radius: 5px;
+        text-align: center;
         z-index: 1000;
+      }
+    }
+
+    /* Mobile & Tablet Styles */
+    @media (max-width: 1024px) {
+      .staff-grid {
+        padding-bottom: 100px; /* Ensure space for the "Press Me" button at the bottom */
+      }
+
+      .eerie-figure {
+        position: relative;
+        margin-top: 10px; /* Move it higher by adjusting this margin */
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        z-index: 1000;
+        width: 100%;
+        text-align: center;
+        display: block;
       }
     }
 
@@ -204,8 +205,7 @@
           <li>§</li>
           <li>Epic epicness (MEEP)</li>
           <li>Redwolf9</li>
-          <li>The Watcher</li>
-         <li>Hollow!</li>
+          <li>The Watcher Hollow!</li>
           <li>leader</li>
         </ul>
       </div>
@@ -216,17 +216,21 @@
   <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto"></audio>
 
   <script>
-    // JavaScript function to play the sound when the "Press Me" button is clicked
-    function playSound() {
-      var audio = document.getElementById('eerieSound');
-      audio.play();
+    // JavaScript function to play the sound when the eerie figure is clicked
+    function playSound(event) {
+      // Check if the click is on the eerie figure
+      if (event.target.classList.contains('eerie-figure')) {
+        var audio = document.getElementById('eerieSound');
+        audio.play();
+      }
     }
 
-    // Add event listener for click event on the "Press Me" button
-    document.querySelector('.press-me').addEventListener('click', playSound);
+    // Add event listener for click event
+    document.body.addEventListener('click', playSound);
   </script>
 
-  <!-- Press Me Button -->
-  <div class="press-me">Press Me</div>
+  <!-- Eerie "Press Me" text for both PC and Mobile -->
+  <div class="eerie-figure">Press Me</div>
+
 </body>
 </html>
