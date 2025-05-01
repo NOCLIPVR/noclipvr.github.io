@@ -8,12 +8,13 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #111;
+      background: url('https://img.freepik.com/premium-photo/abstract-circular-red-background_8466-2.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: white;
       padding-top: 80px;
+      overflow-x: hidden;
     }
 
-    /* KEEPING HEADER SAME */
     header {
       position: fixed;
       top: 0;
@@ -64,10 +65,19 @@
 
     h1 {
       text-align: center;
-      color: #ff3333;
-      font-size: 48px;
-      margin: 30px 0 50px;
+      font-size: 60px;
+      margin: 40px 0 60px;
+      text-transform: uppercase;
       letter-spacing: 2px;
+      -webkit-text-stroke: 2px black;
+    }
+
+    h1 span.red {
+      color: red;
+    }
+
+    h1 span.white {
+      color: white;
     }
 
     .section {
@@ -79,7 +89,7 @@
     .label {
       font-size: 18px;
       margin-bottom: 30px;
-      background: #222;
+      background: rgba(0, 0, 0, 0.7);
       padding: 15px 20px;
       border-left: 5px solid #ff0000;
       border-radius: 6px;
@@ -91,7 +101,7 @@
 
     .level {
       margin-top: 40px;
-      background-color: #1a1a1a;
+      background-color: rgba(26, 26, 26, 0.9);
       border-left: 4px solid #333;
       padding: 20px;
       border-radius: 8px;
@@ -112,7 +122,7 @@
 
     pre {
       white-space: pre-wrap;
-      background: #222;
+      background: rgba(34, 34, 34, 0.95);
       padding: 16px;
       border-radius: 6px;
       color: #ddd;
@@ -122,7 +132,7 @@
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 36px;
+        font-size: 40px;
       }
 
       .label, .level {
@@ -137,19 +147,19 @@
 </head>
 <body>
 
-  <!-- Header Bar (UNCHANGED) -->
+  <!-- Header Bar (from homepage) -->
   <header>
     <div>
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
     <nav>
-      <a href="index.html">Home</a>
       <a href="staff.html">Staff</a>
+      <a href="levels.html">Levels</a>
     </nav>
   </header>
 
-  <!-- Page Title -->
-  <h1>Level Walkthroughs</h1>
+  <!-- Level Walkthrough Title -->
+  <h1><span class="red">Level</span> <span class="white">Walkthroughs</span></h1>
 
   <!-- Main Section -->
   <div class="section">
