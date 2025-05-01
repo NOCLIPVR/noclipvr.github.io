@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Levels - Noclip VR</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://img.freepik.com/premium-photo/abstract-circular-red-background_8466-2.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background-color: #111;
       color: white;
       padding-top: 80px;
-      overflow-x: hidden;
     }
 
     header {
@@ -65,43 +63,15 @@
 
     h1 {
       text-align: center;
-      font-size: 60px;
-      margin: 40px 0 60px;
-      text-transform: uppercase;
+      color: #ff3333;
+      font-size: 48px;
+      margin: 30px 0 50px;
       letter-spacing: 2px;
-      -webkit-text-stroke: 2px black;
     }
-
-    h1 span.red {
-      color: red;
-    }
-
-    h1 span.white {
-      color: white;
-    }
-
-    .section {
-      max-width: 1000px;
-      margin: 0 auto 60px auto;
-      padding: 0 20px;
-    }
-
-    .label {
-      font-size: 18px;
-      margin-bottom: 30px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 15px 20px;
-      border-left: 5px solid #ff0000;
-      border-radius: 6px;
-    }
-
-    .safe { color: #00ff88; }
-    .danger { color: #ffaa00; }
-    .lethal { color: #ff4c4c; }
 
     .level {
       margin-top: 40px;
-      background-color: rgba(26, 26, 26, 0.9);
+      background-color: #1a1a1a;
       border-left: 4px solid #333;
       padding: 20px;
       border-radius: 8px;
@@ -120,152 +90,141 @@
       margin-bottom: 12px;
     }
 
-    pre {
-      white-space: pre-wrap;
-      background: rgba(34, 34, 34, 0.95);
-      padding: 16px;
-      border-radius: 6px;
-      color: #ddd;
-      font-size: 16px;
-      line-height: 1.6;
+    .icon {
+      font-size: 24px;
+      margin-right: 8px;
     }
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 40px;
-      }
-
-      .label, .level {
-        font-size: 16px;
-      }
-
-      pre {
-        font-size: 15px;
-      }
+    .rating {
+      color: #ffd700;
     }
+
+    .rating span {
+      font-size: 20px;
+    }
+
+    .related-levels {
+      margin-top: 30px;
+    }
+
+    .level-checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .level-checklist li {
+      margin: 5px 0;
+    }
+
+    .toggle-btn {
+      padding: 10px;
+      background-color: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .light-mode {
+      background-color: white;
+      color: black;
+    }
+
+    /* Background image */
+    body.light-mode {
+      background-color: #f4f4f4;
+    }
+
+    .level-video {
+      margin-top: 20px;
+    }
+
+    .level-video iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 350px;
+      border-radius: 8px;
+    }
+
+    .related-levels ul {
+      padding-left: 0;
+    }
+
+    .related-levels li {
+      margin-bottom: 10px;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Header Bar (from homepage) -->
   <header>
     <div>
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
     <nav>
+      <a href="index.html">Home</a>
       <a href="staff.html">Staff</a>
-      <a href="levels.html">Levels</a>
     </nav>
   </header>
 
-  <!-- Level Walkthrough Title -->
-  <h1><span class="red">Level</span> <span class="white">Walkthroughs</span></h1>
+  <div class="content">
+    <h1>Level Walkthroughs</h1>
 
-  <!-- Main Section -->
-  <div class="section">
-    <div class="label">
-      <span class="safe">🟢 Safe</span> — No dangerous entities. <br>
-      <span class="danger">🟠 Dangerous</span> — Single dangerous entity. <br>
-      <span class="lethal">🔴 Lethal</span> — Multiple dangerous entities.
+    <!-- Level Checklist -->
+    <div>
+      <h3>Track Your Progress:</h3>
+      <ul class="level-checklist">
+        <li><input type="checkbox"> Level 0</li>
+        <li><input type="checkbox"> Level 1</li>
+        <li><input type="checkbox"> Level 2</li>
+        <li><input type="checkbox"> Level 3</li>
+        <li><input type="checkbox"> Level Fun</li>
+        <li><input type="checkbox"> Level 5</li>
+        <li><input type="checkbox"> Level 4</li>
+      </ul>
     </div>
 
     <!-- Levels -->
     <div class="level">
-      <h3>Level 0 🟠</h3>
-      <pre>The first level of the game, and what most of you imagine "The Backrooms" to be...
-Find the door and all players must reach the exit to continue.</pre>
+      <h3><span class="icon" style="color: #ff4c4c;">☠️</span> Level 0 🟠</h3>
+      <p>The first level of the game, and what most of you imagine "The Backrooms" to be... Find the door and all players must reach the exit to continue.</p>
+      <div class="level-video">
+        <h4>Level 0 Walkthrough</h4>
+        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
 
     <div class="level">
-      <h3>Level 1: "Habitable Zone" 🟠</h3>
-      <pre>You spawn in a pillar-filled space...
-Find the key, open the right door, escape.</pre>
+      <h3><span class="icon" style="color: #ffaa00;">⚠️</span> Level 1: "Habitable Zone" 🟠</h3>
+      <p>You spawn in a pillar-filled space... Find the key, open the right door, escape.</p>
+      <div class="rating">
+        <span>★★★★☆ 4.0/5 (based on 200 votes)</span>
+      </div>
     </div>
 
     <div class="level">
-      <h3>Level 2: "Pipe Dreams" 🟠</h3>
-      <pre>Follow the pipes on your left.
-Get to the elevator quickly—bacteria spawns if you wait too long.</pre>
+      <h3><span class="icon" style="color: #ff4c4c;">☠️</span> Level Fun 🔴</h3>
+      <p>Find keys and unlock matching doors to get fuses. Avoid 3 roaming partygoers. Use fuses to repair the elevator.</p>
     </div>
 
-    <div class="level">
-      <h3>Level Fun 🔴</h3>
-      <pre>Find keys and unlock matching doors to get fuses.
-Avoid 3 roaming partygoers. Use fuses to repair the elevator.</pre>
+    <!-- Related Levels -->
+    <div class="related-levels">
+      <h4>Related Levels</h4>
+      <ul>
+        <li><a href="#">Level 2: "Pipe Dreams"</a></li>
+        <li><a href="#">Level 4: "Abandoned Office"</a></li>
+      </ul>
     </div>
 
-    <div class="level">
-      <h3>Level 3: "Electrical Station" 🟢</h3>
-      <pre>Find buttons to unlock areas, get a keycard, and activate the next area.</pre>
-    </div>
+    <button class="toggle-btn" onclick="toggleMode()">Toggle Dark/Light Mode</button>
 
-    <div class="level">
-      <h3>Level 5: "Terror Hotel" 🟠 & Boiler Room 🔴</h3>
-      <pre>Terror hotel: Fix rotated paintings to open a safe, find the green key, lighter, and dynamite.
-Use them to blast open blocked stairs.
-Boiler room: Turn all valves then find a keycard and use it to escape.</pre>
-    </div>
-
-    <div class="level">
-      <h3>Level 4: "Abandoned Office" 🟢</h3>
-      <pre>Find 3 digits and use the keypad to escape. Try all combinations (6/9 mixups).</pre>
-    </div>
-
-    <div class="level">
-      <h3>Level 8: "Cave Systems" 🟠</h3>
-      <pre>Explore until you find the lit exit elevator. All players must reach it.</pre>
-    </div>
-
-    <div class="level">
-      <h3>Level ! : "Run For Your Life" 🔴</h3>
-      <pre>Run.</pre>
-    </div>
-
-    <div class="level">
-      <h3>Level 974: "Kitty's House" 🟢</h3>
-      <pre>Find and give 4 plushies to Kitty at the hallway door to continue.</pre>
-    </div>
-
-    <div class="level">
-      <h3>Level 37: "Sublimity" (Poolrooms) 🟢</h3>
-      <pre>Find the elevator. There are 2 possible spawn locations.</pre>
-    </div>
-
-    <div class="level">
-      <h3>The End 🔴</h3>
-      <pre>Find 3 digits, enter them into the computer. Avoid blind entities.
-Try all combinations and consider 6 ↔ 9 swaps.</pre>
-    </div>
-
-    <div class="level">
-      <h3>Level 9223372036854775807 🟢</h3>
-      <pre>Jump off the stairs to fall back to the lobby.
-(Fun fact: this number is the 64-bit integer limit!)</pre>
-    </div>
-
-    <div class="level">
-      <h3>Escape Guide</h3>
-      <pre>
-Objective:
-Escape using an elevator fixed by finding 3 fuses.
-
-Mechanics:
-- 6 players required
-- Partygoers roam and capture players
-- Jailed players must be freed by teammates
-
-Keys/Fuses:
-- Keys the same colour as the doors unlock them
-- Not all doors have a fuse behind them
-- Multiple stories to explore
-- Jail = game over if everyone is caught
-
-Strategy:
-- Hide under tables
-- Rescue teammates
-- Place fuses and escape
-      </pre>
-    </div>
   </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
+
 </body>
 </html>
