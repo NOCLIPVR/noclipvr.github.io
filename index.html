@@ -1,181 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noclip VR</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
       background: url('https://img.freepik.com/premium-photo/abstract-circular-red-background_8466-2.jpg') no-repeat center center fixed;
       background-size: cover;
       color: white;
       overflow-x: hidden;
     }
-
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 15px 40px;
+      background-color: black;
+      padding: 10px 0;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      padding: 0 20px;
     }
-
-    header .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     header h1 {
       margin: 0;
-      font-size: 26px;
+      font-size: 24px;
       color: red;
-      font-weight: 800;
     }
-
     header h2 {
       margin: 0;
-      font-size: 26px;
+      font-size: 24px;
       color: white;
-      font-weight: 600;
     }
-
     nav {
       display: flex;
-      gap: 15px;
+      width: 200px;
+      justify-content: flex-start;
+      margin-right: 20px;
     }
-
     nav a {
       color: white;
       text-decoration: none;
-      padding: 10px 18px;
-      border: 2px solid red;
+      padding: 10px 20px;
+      background-color: black;
+      margin: 0;
       border-radius: 5px;
-      font-weight: 600;
-      transition: background 0.3s, color 0.3s;
+      font-weight: bold;
+      display: block;
+      text-align: center;
     }
-
     nav a:hover {
       background-color: red;
-      color: black;
     }
-
     .content {
-      padding: 140px 20px 60px;
+      padding: 120px 20px 40px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
     }
-
     .content h1 {
       font-size: 60px;
       margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: white;
-      -webkit-text-stroke: 1px black;
+      -webkit-text-stroke: 2px black;
     }
-
     .content h1 span {
       color: red;
     }
-
     .content h2 {
       font-size: 32px;
       margin-bottom: 20px;
-      color: #ffcccc;
-      text-shadow: 1px 1px 3px black;
+      color: black;
     }
-
     .content p {
       font-size: 18px;
-      line-height: 1.8;
-      padding: 0 10px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
-      padding: 20px;
+      line-height: 1.6;
     }
-
-    .content img, .content video {
+    .content img {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    .content video {
       width: 100%;
       max-width: 800px;
-      margin: 30px 0;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      margin: 20px 0;
+      border-radius: 10px;
     }
 
-    .floating-logos {
-      position: fixed;
+    /* Styling for both logos */
+    .logo {
+      position: absolute;
       bottom: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 40px;
-      pointer-events: none;
+      width: 200px;
+      height: auto;
+      transition: transform 0.3s ease-in-out;
     }
 
-    .floating-logos a {
-      pointer-events: all;
+    .discord-logo {
+      left: 20px;
     }
 
-    .floating-logos img {
-      width: 140px;
-      transition: transform 0.3s ease;
+    .meta-logo {
+      right: 20px;
     }
 
-    .floating-logos img:hover {
-      transform: scale(1.15);
+    .logo:hover {
+      transform: scale(1.2);
     }
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
+    /* MOBILE & TABLET STYLES */
+    @media only screen and (max-width: 768px) {
+      .logo {
+        position: static;
+        display: block;
+        margin: 20px auto 0;
+        width: 120px;
       }
 
-      nav {
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-
-      .content h1 {
-        font-size: 40px;
-      }
-
-      .content h2 {
-        font-size: 24px;
-      }
-
-      .floating-logos {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        bottom: 10px;
-      }
-
-      .floating-logos img {
-        width: 100px;
+      .discord-logo, .meta-logo {
+        margin-bottom: 10px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">
+    <div>
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
     <nav>
-      <a href="index.html">Home</a>
       <a href="staff.html">Staff</a>
       <a href="levels.html">Levels</a>
     </nav>
@@ -185,32 +143,33 @@
     <h1><span>NOCLIP</span> VR</h1>
 
     <video controls>
-      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4" type="video/mp4">
+      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <h2>A Multiplayer Horror Experience</h2>
 
     <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
-
     <p>
-      Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many immersive levels filled with eerie ambiance, mind-bending puzzles, and unpredictable entities.
+      Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
       <br><br>
-      Team up with friends and escape the madness—if you can.
+      Invite your friends and noclip out of the frontrooms now!
       <br><br>
-      “If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms, where it's nothing but the stink of old moist carpet, the madness of mono-yellow, the endless background noise of fluorescent lights at maximum hum-buzz...”
+      "If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms, where it's nothing but the stink of old moist carpet, the madness of mono-yellow, the endless background noise of fluorescent lights at maximum hum-buzz, and approximately six hundred million square miles of randomly segmented empty rooms to be trapped in.
       <br><br>
-      <em>Be alert. They can hear you.</em>
+      God save you if you hear something wandering around nearby, because it sure as hell has heard you."
     </p>
   </div>
 
-  <div class="floating-logos">
-    <a href="https://discord.gg/noclipvr" target="_blank">
-      <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo">
-    </a>
-    <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
-      <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo">
-    </a>
-  </div>
+  <!-- Discord logo clickable link -->
+  <a href="https://discord.gg/noclipvr" target="_blank">
+    <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
+  </a>
+
+  <!-- Meta logo clickable link -->
+  <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
+    <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
+  </a>
+
 </body>
 </html>
