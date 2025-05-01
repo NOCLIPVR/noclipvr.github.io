@@ -89,36 +89,43 @@
     .danger { color: #ffaa00; }
     .lethal { color: #ff4c4c; }
 
-    .level-list {
-      margin-top: 20px;
-    }
-
     .level {
+      margin-top: 40px;
       background-color: #1a1a1a;
-      padding: 12px;
+      border-left: 4px solid #333;
+      padding: 20px;
       border-radius: 8px;
-      margin: 10px 0;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.05);
+      transition: transform 0.2s ease;
       cursor: pointer;
-      transition: background-color 0.2s ease;
-      color: #ffcccc;
     }
 
     .level:hover {
-      background-color: #333;
+      transform: translateY(-3px);
     }
 
-    .description {
-      display: none;
-      background-color: #222;
-      padding: 12px;
-      border-radius: 6px;
-      margin-top: 10px;
+    .level h3 {
+      margin-top: 0;
+      color: #ffcccc;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    pre {
       white-space: pre-wrap;
+      background: #222;
+      padding: 16px;
+      border-radius: 6px;
       color: #ddd;
       font-size: 16px;
+      line-height: 1.6;
+      display: none;
     }
 
-    /* Responsive adjustments */
+    .level.active pre {
+      display: block;
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 36px;
@@ -128,15 +135,15 @@
         font-size: 16px;
       }
 
-      .description {
-        font-size: 14px;
+      pre {
+        font-size: 15px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header Bar -->
+  <!-- Header Bar (UNCHANGED) -->
   <header>
     <div>
       <h1>NOCLIP</h1><h2>VR</h2>
@@ -158,70 +165,91 @@
       <span class="lethal">🔴 Lethal</span> — Multiple dangerous entities.
     </div>
 
-    <!-- List of Levels -->
-    <div class="level-list">
-      <div class="level" data-description="Level 0: The first level of the game, and what most of you imagine 'The Backrooms' to be... Find the door and all players must reach the exit to continue.">
-        Level 0 🟠
-      </div>
-      <div class="level" data-description="Level 1: You spawn in a pillar-filled space... Find the key, open the right door, escape.">
-        Level 1: "Habitable Zone" 🟠
-      </div>
-      <div class="level" data-description="Level 2: Follow the pipes on your left. Get to the elevator quickly—bacteria spawns if you wait too long.">
-        Level 2: "Pipe Dreams" 🟠
-      </div>
-      <div class="level" data-description="Level Fun: Find keys and unlock matching doors to get fuses. Avoid 3 roaming partygoers. Use fuses to repair the elevator.">
-        Level Fun 🔴
-      </div>
-      <div class="level" data-description="Level 3: Find buttons to unlock areas, get a keycard, and activate the next area.">
-        Level 3: "Electrical Station" 🟢
-      </div>
-      <div class="level" data-description="Level 5: Terror hotel: Fix rotated paintings to open a safe, find the green key, lighter, and dynamite. Boiler room: Turn all valves then find a keycard and use it to escape.">
-        Level 5: "Terror Hotel" 🟠 & Boiler Room 🔴
-      </div>
-      <div class="level" data-description="Level 4: Find 3 digits and use the keypad to escape. Try all combinations (6/9 mixups).">
-        Level 4: "Abandoned Office" 🟢
-      </div>
-      <div class="level" data-description="Level 8: Explore until you find the lit exit elevator. All players must reach it.">
-        Level 8: "Cave Systems" 🟠
-      </div>
-      <div class="level" data-description="Level !: Run.">
-        Level ! : "Run For Your Life" 🔴
-      </div>
-      <div class="level" data-description="Level 974: Find and give 4 plushies to Kitty at the hallway door to continue.">
-        Level 974: "Kitty's House" 🟢
-      </div>
-      <div class="level" data-description="Level 37: Find the elevator. There are 2 possible spawn locations.">
-        Level 37: "Sublimity" (Poolrooms) 🟢
-      </div>
-      <div class="level" data-description="The End: Find 3 digits, enter them into the computer. Avoid blind entities. Try all combinations and consider 6 ↔ 9 swaps.">
-        The End 🔴
-      </div>
-      <div class="level" data-description="Level 9223372036854775807: Jump off the stairs to fall back to the lobby. (Fun fact: this number is the 64-bit integer limit!)">
-        Level 9223372036854775807 🟢
-      </div>
+    <!-- Levels -->
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 0 🟠</h3>
+      <pre>The first level of the game, and what most of you imagine "The Backrooms" to be...</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 1: "Habitable Zone" 🟠</h3>
+      <pre>You spawn in a pillar-filled space... Find the key, open the right door, escape.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 2: "Pipe Dreams" 🟠</h3>
+      <pre>Follow the pipes on your left. Get to the elevator quickly—bacteria spawns if you wait too long.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level Fun 🔴</h3>
+      <pre>Find keys and unlock matching doors to get fuses. Avoid 3 roaming partygoers. Use fuses to repair the elevator.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 3: "Electrical Station" 🟢</h3>
+      <pre>Find buttons to unlock areas, get a keycard, and activate the next area.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 5: "Terror Hotel" 🟠 & Boiler Room 🔴</h3>
+      <pre>Terror hotel: Fix rotated paintings to open a safe, find the green key, lighter, and dynamite. Use them to blast open blocked stairs. Boiler room: Turn all valves then find a keycard and use it to escape.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 4: "Abandoned Office" 🟢</h3>
+      <pre>Find 3 digits and use the keypad to escape. Try all combinations (6/9 mixups).</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 8: "Cave Systems" 🟠</h3>
+      <pre>Explore until you find the lit exit elevator. All players must reach it.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level ! : "Run For Your Life" 🔴</h3>
+      <pre>Run.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 974: "Kitty's House" 🟢</h3>
+      <pre>Find and give 4 plushies to Kitty at the hallway door to continue.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 37: "Sublimity" (Poolrooms) 🟢</h3>
+      <pre>Find the elevator. There are 2 possible spawn locations.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>The End 🔴</h3>
+      <pre>Find 3 digits, enter them into the computer. Avoid blind entities. Try all combinations and consider 6 ↔ 9 swaps.</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Level 9223372036854775807 🟢</h3>
+      <pre>Jump off the stairs to fall back to the lobby. (Fun fact: this number is the 64-bit integer limit!)</pre>
+    </div>
+
+    <div class="level" onclick="toggleDescription(this)">
+      <h3>Escape Guide</h3>
+      <pre>Objective: Escape using an elevator fixed by finding 3 fuses. Mechanics: 6 players required. Partygoers roam and capture players. Jailed players must be freed by teammates...</pre>
     </div>
   </div>
 
   <script>
-    // JavaScript to handle the click event for each level
-    document.querySelectorAll('.level').forEach(level => {
-      level.addEventListener('click', () => {
-        const description = level.getAttribute('data-description');
-        
-        // Create the description element dynamically
-        let descriptionElement = level.querySelector('.description');
-        
-        if (!descriptionElement) {
-          descriptionElement = document.createElement('div');
-          descriptionElement.classList.add('description');
-          descriptionElement.textContent = description;
-          level.appendChild(descriptionElement);
+    function toggleDescription(level) {
+      // Close all levels
+      const allLevels = document.querySelectorAll('.level');
+      allLevels.forEach(lvl => {
+        if (lvl !== level) {
+          lvl.classList.remove('active');
         }
-        
-        // Toggle visibility of the description
-        descriptionElement.style.display = descriptionElement.style.display === 'block' ? 'none' : 'block';
       });
-    });
+
+      // Toggle the clicked level
+      level.classList.toggle('active');
+    }
   </script>
 </body>
 </html>
