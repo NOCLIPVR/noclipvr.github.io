@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Levels - Noclip VR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
@@ -13,6 +13,7 @@
       padding-top: 80px;
     }
 
+    /* KEEPING HEADER SAME */
     header {
       position: fixed;
       top: 0;
@@ -69,94 +70,73 @@
       letter-spacing: 2px;
     }
 
-    .level {
-      margin-top: 40px;
-      background-color: #1a1a1a;
-      border-left: 4px solid #333;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(255, 0, 0, 0.05);
-      transition: transform 0.2s ease;
+    .section {
+      max-width: 1000px;
+      margin: 0 auto 60px auto;
+      padding: 0 20px;
     }
 
-    .level:hover {
-      transform: translateY(-3px);
+    .label {
+      font-size: 18px;
+      margin-bottom: 30px;
+      background: #222;
+      padding: 15px 20px;
+      border-left: 5px solid #ff0000;
+      border-radius: 6px;
     }
 
-    .level h3 {
-      margin-top: 0;
-      color: #ffcccc;
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
+    .safe { color: #00ff88; }
+    .danger { color: #ffaa00; }
+    .lethal { color: #ff4c4c; }
 
-    .icon {
-      font-size: 24px;
-      margin-right: 8px;
-    }
-
-    .rating {
-      color: #ffd700;
-    }
-
-    .rating span {
-      font-size: 20px;
-    }
-
-    .related-levels {
-      margin-top: 30px;
-    }
-
-    .level-checklist {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .level-checklist li {
-      margin: 5px 0;
-    }
-
-    .toggle-btn {
-      padding: 10px;
-      background-color: #222;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    .light-mode {
-      background-color: white;
-      color: black;
-    }
-
-    /* Background image */
-    body.light-mode {
-      background-color: #f4f4f4;
-    }
-
-    .level-video {
+    .level-list {
       margin-top: 20px;
     }
 
-    .level-video iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 350px;
+    .level {
+      background-color: #1a1a1a;
+      padding: 12px;
       border-radius: 8px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      color: #ffcccc;
     }
 
-    .related-levels ul {
-      padding-left: 0;
+    .level:hover {
+      background-color: #333;
     }
 
-    .related-levels li {
-      margin-bottom: 10px;
+    .description {
+      display: none;
+      background-color: #222;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 10px;
+      white-space: pre-wrap;
+      color: #ddd;
+      font-size: 16px;
     }
 
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .label, .level {
+        font-size: 16px;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Header Bar -->
   <header>
     <div>
       <h1>NOCLIP</h1><h2>VR</h2>
@@ -167,64 +147,81 @@
     </nav>
   </header>
 
-  <div class="content">
-    <h1>Level Walkthroughs</h1>
+  <!-- Page Title -->
+  <h1>Level Walkthroughs</h1>
 
-    <!-- Level Checklist -->
-    <div>
-      <h3>Track Your Progress:</h3>
-      <ul class="level-checklist">
-        <li><input type="checkbox"> Level 0</li>
-        <li><input type="checkbox"> Level 1</li>
-        <li><input type="checkbox"> Level 2</li>
-        <li><input type="checkbox"> Level 3</li>
-        <li><input type="checkbox"> Level Fun</li>
-        <li><input type="checkbox"> Level 5</li>
-        <li><input type="checkbox"> Level 4</li>
-      </ul>
+  <!-- Main Section -->
+  <div class="section">
+    <div class="label">
+      <span class="safe">🟢 Safe</span> — No dangerous entities. <br>
+      <span class="danger">🟠 Dangerous</span> — Single dangerous entity. <br>
+      <span class="lethal">🔴 Lethal</span> — Multiple dangerous entities.
     </div>
 
-    <!-- Levels -->
-    <div class="level">
-      <h3><span class="icon" style="color: #ff4c4c;">☠️</span> Level 0 🟠</h3>
-      <p>The first level of the game, and what most of you imagine "The Backrooms" to be... Find the door and all players must reach the exit to continue.</p>
-      <div class="level-video">
-        <h4>Level 0 Walkthrough</h4>
-        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+    <!-- List of Levels -->
+    <div class="level-list">
+      <div class="level" data-description="Level 0: The first level of the game, and what most of you imagine 'The Backrooms' to be... Find the door and all players must reach the exit to continue.">
+        Level 0 🟠
+      </div>
+      <div class="level" data-description="Level 1: You spawn in a pillar-filled space... Find the key, open the right door, escape.">
+        Level 1: "Habitable Zone" 🟠
+      </div>
+      <div class="level" data-description="Level 2: Follow the pipes on your left. Get to the elevator quickly—bacteria spawns if you wait too long.">
+        Level 2: "Pipe Dreams" 🟠
+      </div>
+      <div class="level" data-description="Level Fun: Find keys and unlock matching doors to get fuses. Avoid 3 roaming partygoers. Use fuses to repair the elevator.">
+        Level Fun 🔴
+      </div>
+      <div class="level" data-description="Level 3: Find buttons to unlock areas, get a keycard, and activate the next area.">
+        Level 3: "Electrical Station" 🟢
+      </div>
+      <div class="level" data-description="Level 5: Terror hotel: Fix rotated paintings to open a safe, find the green key, lighter, and dynamite. Boiler room: Turn all valves then find a keycard and use it to escape.">
+        Level 5: "Terror Hotel" 🟠 & Boiler Room 🔴
+      </div>
+      <div class="level" data-description="Level 4: Find 3 digits and use the keypad to escape. Try all combinations (6/9 mixups).">
+        Level 4: "Abandoned Office" 🟢
+      </div>
+      <div class="level" data-description="Level 8: Explore until you find the lit exit elevator. All players must reach it.">
+        Level 8: "Cave Systems" 🟠
+      </div>
+      <div class="level" data-description="Level !: Run.">
+        Level ! : "Run For Your Life" 🔴
+      </div>
+      <div class="level" data-description="Level 974: Find and give 4 plushies to Kitty at the hallway door to continue.">
+        Level 974: "Kitty's House" 🟢
+      </div>
+      <div class="level" data-description="Level 37: Find the elevator. There are 2 possible spawn locations.">
+        Level 37: "Sublimity" (Poolrooms) 🟢
+      </div>
+      <div class="level" data-description="The End: Find 3 digits, enter them into the computer. Avoid blind entities. Try all combinations and consider 6 ↔ 9 swaps.">
+        The End 🔴
+      </div>
+      <div class="level" data-description="Level 9223372036854775807: Jump off the stairs to fall back to the lobby. (Fun fact: this number is the 64-bit integer limit!)">
+        Level 9223372036854775807 🟢
       </div>
     </div>
-
-    <div class="level">
-      <h3><span class="icon" style="color: #ffaa00;">⚠️</span> Level 1: "Habitable Zone" 🟠</h3>
-      <p>You spawn in a pillar-filled space... Find the key, open the right door, escape.</p>
-      <div class="rating">
-        <span>★★★★☆ 4.0/5 (based on 200 votes)</span>
-      </div>
-    </div>
-
-    <div class="level">
-      <h3><span class="icon" style="color: #ff4c4c;">☠️</span> Level Fun 🔴</h3>
-      <p>Find keys and unlock matching doors to get fuses. Avoid 3 roaming partygoers. Use fuses to repair the elevator.</p>
-    </div>
-
-    <!-- Related Levels -->
-    <div class="related-levels">
-      <h4>Related Levels</h4>
-      <ul>
-        <li><a href="#">Level 2: "Pipe Dreams"</a></li>
-        <li><a href="#">Level 4: "Abandoned Office"</a></li>
-      </ul>
-    </div>
-
-    <button class="toggle-btn" onclick="toggleMode()">Toggle Dark/Light Mode</button>
-
   </div>
 
   <script>
-    function toggleMode() {
-      document.body.classList.toggle('light-mode');
-    }
+    // JavaScript to handle the click event for each level
+    document.querySelectorAll('.level').forEach(level => {
+      level.addEventListener('click', () => {
+        const description = level.getAttribute('data-description');
+        
+        // Create the description element dynamically
+        let descriptionElement = level.querySelector('.description');
+        
+        if (!descriptionElement) {
+          descriptionElement = document.createElement('div');
+          descriptionElement.classList.add('description');
+          descriptionElement.textContent = description;
+          level.appendChild(descriptionElement);
+        }
+        
+        // Toggle visibility of the description
+        descriptionElement.style.display = descriptionElement.style.display === 'block' ? 'none' : 'block';
+      });
+    });
   </script>
-
 </body>
 </html>
