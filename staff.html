@@ -15,37 +15,25 @@
       height: 100%;
     }
 
-    /* CSS Media Query for Mobile and Tablets */
-    @media (max-width: 1024px) {
-      /* Mobile and Tablet styles */
-      .eerie-figure {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 24px;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-        text-align: center;
-        width: 100%;
-        z-index: 1000;
-      }
+    /* CSS for "Press Me" visibility and positioning */
+    .eerie-figure {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      z-index: 1000;
+      display: none; /* Hide by default */
     }
 
-    /* CSS Media Query for PC */
+    /* Media Query for PC */
     @media (min-width: 1025px) {
-      /* PC only styles */
       .eerie-figure {
-        position: absolute;
-        right: 40px; /* Keep it on the right side for PC */
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 24px;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-        text-align: center;
+        display: none; /* Hide for PC */
       }
     }
 
@@ -213,17 +201,31 @@
   <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto"></audio>
 
   <script>
-    // JavaScript function to play the sound when the eerie figure is clicked
-    function playSound(event) {
-      // Check if the click is on the eerie figure
-      if (event.target.classList.contains('eerie-figure')) {
-        var audio = document.getElementById('eerieSound');
-        audio.play();
+    // Show the "Press Me" button only when at the bottom of the page
+    function checkScroll() {
+      var docHeight = document.documentElement.scrollHeight;
+      var scrollPosition = window.scrollY + window.innerHeight;
+
+      // Show the button if at the bottom of the page, hide it otherwise
+      if (scrollPosition >= docHeight) {
+        document.querySelector('.eerie-figure').style.display = 'block';
+      } else {
+        document.querySelector('.eerie-figure').style.display = 'none';
       }
     }
 
-    // Add event listener for click event
-    document.body.addEventListener('click', playSound);
+    // Play the sound when the button is clicked
+    function playSound(event) {
+      var audio = document.getElementById('eerieSound');
+      audio.play();
+    }
+
+    // Add event listener for scroll and click
+    window.addEventListener('scroll', checkScroll);
+    document.querySelector('.eerie-figure').addEventListener('click', playSound);
+
+    // Initial check to hide the button
+    checkScroll();
   </script>
 
   <!-- Eerie "Press Me" text -->
