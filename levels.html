@@ -1,289 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Levels - Noclip VR</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #111;
-      color: white;
-      padding-top: 80px;
-    }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #111;
+  color: white;
+  padding-top: 80px;
+}
 
-    /* KEEPING HEADER SAME */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: black;
-      padding: 10px 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
+/* KEEPING HEADER SAME */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-      color: red;
-    }
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: red;
+}
 
-    header h2 {
-      margin: 0;
-      font-size: 24px;
-      color: white;
-    }
+header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
 
-    nav {
-      display: flex;
-      width: 200px;
-      justify-content: flex-start;
-      margin-right: 20px;
-    }
+nav {
+  display: flex;
+  width: 200px;
+  justify-content: flex-start;
+  margin-right: 20px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      background-color: black;
-      margin: 0;
-      border-radius: 5px;
-      font-weight: bold;
-      display: block;
-      text-align: center;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: black;
+  margin: 0;
+  border-radius: 5px;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
 
-    nav a:hover {
-      background-color: red;
-    }
+nav a:hover {
+  background-color: red;
+}
 
-    h1 {
-      text-align: center;
-      color: #ff3333;
-      font-size: 48px;
-      margin: 30px 0 50px;
-      letter-spacing: 2px;
-    }
+h1 {
+  text-align: center;
+  color: #ff3333;
+  font-size: 48px;
+  margin: 30px 0 50px;
+  letter-spacing: 2px;
+}
 
-    .section {
-      max-width: 1000px;
-      margin: 0 auto 60px auto;
-      padding: 0 20px;
-    }
+.section {
+  max-width: 1000px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
 
-    .label {
-      font-size: 18px;
-      margin-bottom: 30px;
-      background: #222;
-      padding: 15px 20px;
-      border-left: 5px solid #ff0000;
-      border-radius: 6px;
-    }
+.label {
+  font-size: 18px;
+  margin-bottom: 30px;
+  background: #222;
+  padding: 15px 20px;
+  border-left: 5px solid #ff0000;
+  border-radius: 6px;
+}
 
-    .safe { color: #00ff88; }
-    .danger { color: #ffaa00; }
-    .lethal { color: #ff4c4c; }
+.safe { color: #00ff88; }
+.danger { color: #ffaa00; }
+.lethal { color: #ff4c4c; }
 
-    .level {
-      margin-top: 40px;
-      background-color: #1a1a1a;
-      border-left: 4px solid #333;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(255, 0, 0, 0.05);
-      transition: transform 0.2s ease;
-      cursor: pointer;
-    }
+.level {
+  margin-top: 40px;
+  background-color: #ff0000; /* Red for the levels */
+  border-left: 4px solid #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
 
-    .level:hover {
-      transform: translateY(-3px);
-    }
+.level:hover {
+  transform: translateY(-3px);
+}
 
-    .level h3 {
-      margin-top: 0;
-      color: #ffcccc;
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
+.level h3 {
+  margin-top: 0;
+  color: #ffffff; /* White color for the title */
+  font-size: 22px;
+  margin-bottom: 12px;
+}
 
-    pre {
-      white-space: pre-wrap;
-      background: #222;
-      padding: 16px;
-      border-radius: 6px;
-      color: #ddd;
-      font-size: 16px;
-      line-height: 1.6;
-      display: none;
-    }
+pre {
+  white-space: pre-wrap;
+  background: #222;
+  padding: 16px;
+  border-radius: 6px;
+  color: #fff; /* White text for walkthrough */
+  font-size: 16px;
+  line-height: 1.6;
+  display: none;
+}
 
-    .level.active pre {
-      display: block;
-    }
+.level.active pre {
+  display: block;
+}
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 36px;
-      }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
 
-      .label, .level {
-        font-size: 16px;
-      }
+  .label, .level {
+    font-size: 16px;
+  }
 
-      pre {
-        font-size: 15px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header Bar (UNCHANGED) -->
-  <header>
-    <div>
-      <h1>NOCLIP</h1><h2>VR</h2>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="staff.html">Staff</a>
-    </nav>
-  </header>
-
-  <!-- Page Title -->
-  <h1>Level Walkthroughs</h1>
-
-  <!-- Main Section -->
-  <div class="section">
-    <div class="label">
-      <span class="safe">🟢 Safe</span> — No dangerous entities. <br>
-      <span class="danger">🟠 Dangerous</span> — Single dangerous entity. <br>
-      <span class="lethal">🔴 Lethal</span> — Multiple dangerous entities.
-    </div>
-
-    <!-- Levels -->
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 0 🟠</h3>
-      <pre>The first level of the game, find the door and escape, all players must be at exit to proceed</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 1: "Habitable Zone" 🟠</h3>
-      <pre>You spawn in a pillar-filled space... Find the key, open the right door, escape.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 2: "Pipe Dreams" 🟠</h3>
-      <pre>Follow the pipes on your left. Get to the elevator quickly bacteria spawns if you wait too long.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level Fun 🔴</h3>
-      <pre>Find keys, unlock doors, get fuses, Avoid 3 roaming partygoers. Use fuses to repair the elevator.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 3: "Electrical Station" 🟢</h3>
-      <pre>Find buttons to unlock the gates, get a keycard, and put it in the keypad to escape.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 5: "Terror Hotel" 🟠 & Boiler Room 🔴</h3>
-      <pre>Terror hotel:  rotate paintings to open a safe, find the green key, lighter, and dynamite. Use them to blast open blocked stairs. 
-        Boiler room: Turn all valves then find a keycard and use it to escape.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 4: "Abandoned Office" 🟢</h3>
-      <pre>Find 3 digits and use the keypad to escape. Try all combinations (6/9 mixups).</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 8: "Cave Systems" 🟠</h3>
-      <pre>Explore until you find the lit exit elevator. All players must reach it to proceed.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level ! : "Run For Your Life" 🔴</h3>
-      <pre>Run.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 974: "Kitty's House" 🟢</h3>
-      <pre>Find and give 4 plushies to Kitty at the hallway door to continue.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 37: "Sublimity" (Poolrooms) 🟢</h3>
-      <pre>Find the elevator. There are 2 possible spawn locations.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>The End 🔴</h3>
-      <pre>Find 3 digits, enter them into the computer. Avoid blind entities. Try all combinations and consider 6 ↔ 9 swaps.</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Level 9223372036854775807 🟢</h3>
-      <pre>Jump off the stairs to fall back to the lobby. (Fun fact: this number is the 64-bit integer limit!)</pre>
-    </div>
-
-    <div class="level" onclick="toggleDescription(this)">
-      <h3>Escape Guide</h3>
-      <pre>Player Dynamics:
-The game supports 6 players.
-
-If a player is caught by a partygoer, they’re sent to a jail near the exit, marked by a red arrow.
-
-Another player must press a button next to the jail to free them.
-
-If all players are jailed, the game ends in a loss.
-
-The Jail:
-Captured players wait to be rescued.
-
-A free player must press the jail button to release them.
-
-The Partygoers:
-Partygoers are fast and can be evaded by hiding under tables or outrunning them.
-
-Finding the Fuses:
-3 fuses are needed to fix the elevator.
-
-Fuses spawn behind locked colored doors (blue, red, green), but not every door has a fuse.
-
-Keys to open these doors spawn in set locations, with duplicates for each player.
-
-Level Layout:
-The environment has 3 stories connected by stairs.
-
-Recap:
-Escape through the elevator by collecting 3 fuses from colored doors. If a player is caught by a partygoer, they’re jailed, and the game ends if everyone is jailed. Other players can rescue them by pressing the button next to the jail.
-
-
-
-
-</pre>
-    </div>
-  </div>
-
-  <script>
-    function toggleDescription(level) {
-      // Close all levels
-      const allLevels = document.querySelectorAll('.level');
-      allLevels.forEach(lvl => {
-        if (lvl !== level) {
-          lvl.classList.remove('active');
-        }
-      });
-
-      // Toggle the clicked level
-      level.classList.toggle('active');
-    }
-  </script>
-</body>
-</html>
+  pre {
+    font-size: 15px;
+  }
+}
