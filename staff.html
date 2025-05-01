@@ -34,26 +34,20 @@
     /* Mobile & Tablet Styles */
     @media (max-width: 1024px) {
       .staff-grid {
-        padding-bottom: 100px; /* Give space for the "Press Me" button at the bottom */
+        padding-bottom: 100px; /* Ensure space for the "Press Me" button at the bottom */
       }
 
       .eerie-figure {
-        display: none;
-        position: fixed;
-        left: 50%;
-        bottom: 10px; /* Position it just above the bottom */
-        transform: translateX(-50%);
+        position: relative;
+        margin-top: 30px; /* Ensure some spacing from the last staff card */
         font-size: 24px;
         font-weight: bold;
         color: white;
         cursor: pointer;
         text-align: center;
         z-index: 1000;
-        width: auto;
-      }
-
-      /* Show the "Press Me" button only when you are at the bottom of the page */
-      .show-press-me {
+        width: 100%;
+        text-align: center;
         display: block;
       }
     }
@@ -233,21 +227,6 @@
 
     // Add event listener for click event
     document.body.addEventListener('click', playSound);
-
-    // Function to check if scrolled to the bottom
-    function checkScrollPosition() {
-      var contentHeight = document.documentElement.scrollHeight;
-      var currentScroll = window.scrollY + window.innerHeight;
-      if (currentScroll >= contentHeight) {
-        document.querySelector('.eerie-figure').classList.add('show-press-me');
-      } else {
-        document.querySelector('.eerie-figure').classList.remove('show-press-me');
-      }
-    }
-
-    // Check scroll position on load and scroll
-    window.addEventListener('scroll', checkScrollPosition);
-    window.addEventListener('load', checkScrollPosition);
   </script>
 
   <!-- Eerie "Press Me" text for both PC and Mobile -->
