@@ -349,6 +349,12 @@
             const reviewText = reviewTextField.value;
             const reviewerName = reviewerNameField.value;
 
+            // Prevent reviews containing "@" symbol
+            if (reviewText.includes('@')) {
+                alert('The "@" symbol is not allowed in the review.');
+                return;
+            }
+
             if (selectedRating > 0 && reviewText.trim() !== '') {
                 const webhookURL = 'https://discord.com/api/webhooks/1367890958888206439/sADYvIyJfFxIlU4greHWI4w3nzt9NTLTHzrF657KBiOaR4DEWcxcTwm3nJgSqf8DNhxz'; // Replace with your Discord Webhook URL
 
