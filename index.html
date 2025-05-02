@@ -14,24 +14,33 @@
             overflow-x: hidden;
         }
 
+        /* Header Bar */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             background-color: black;
-            padding: 5px 0; /* Reduced padding to make the bar thinner */
+            padding: 5px 0;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
-            height: 50px; /* Set specific height to make the bar thinner */
+            padding-left: 20px;
         }
 
-        header h1, header h2 {
+        header h1 {
             margin: 0;
-            font-size: 20px; /* Adjust font size for smaller text */
+            font-size: 20px;
+            color: red;
         }
 
+        header h2 {
+            margin: 0;
+            font-size: 20px;
+            color: white;
+        }
+
+        /* Navigation and Buttons */
         nav {
             display: flex;
             justify-content: center;
@@ -55,7 +64,7 @@
         nav a, .review-btn {
             color: white;
             text-decoration: none;
-            padding: 8px 16px; /* Reduced padding for smaller links */
+            padding: 8px 16px;
             background-color: black;
             border-radius: 5px;
             font-weight: bold;
@@ -67,6 +76,7 @@
             background-color: red;
         }
 
+        /* Content Section */
         .content {
             padding: 120px 20px 40px;
             max-width: 1000px;
@@ -232,12 +242,11 @@
             <h1>NOCLIP</h1><h2>VR</h2>
         </div>
         <nav>
-            <div class="review-btn-container" style="margin-left: auto; margin-right: auto;">
-                <!-- Leave a Review button is centered -->
-                <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
+            <div class="left">
+                <!-- Left aligned buttons (if any) can go here -->
             </div>
             <div class="right">
-                <!-- These buttons are now right aligned -->
+                <!-- These buttons are right-aligned -->
                 <a href="levels.html">Levels</a>
                 <a href="staff.html">Staff</a>
             </div>
