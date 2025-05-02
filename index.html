@@ -12,6 +12,9 @@
             background-size: cover;
             color: white;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes full height of screen */
         }
 
         /* Mobile-specific background */
@@ -96,6 +99,7 @@
             max-width: 1000px;
             margin: auto;
             text-align: center;
+            flex-grow: 1; /* This ensures the content section grows to take available space */
         }
 
         .content h1 {
@@ -251,14 +255,12 @@
 
         /* Footer */
         footer {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            color: white;
             text-align: center;
-            margin: 20px;
+            padding: 20px;
+            background-color: black;
+            color: white;
+            font-size: 14px;
+            margin-top: auto; /* Pushes footer to the bottom */
         }
 
         footer p {
@@ -308,6 +310,11 @@
     <a href="https://discord.gg/noclipvr" target="_blank"><img class="logo discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo"></a>
     <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank"><img class="logo meta-logo" src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo"></a>
 
+    <!-- Footer Section -->
+    <footer>
+        <p>Website created by §</p>
+    </footer>
+
     <!-- Review Modal -->
     <div class="modal" id="reviewModal">
         <div class="modal-content">
@@ -326,11 +333,6 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>Website created by §</p>
-    </footer>
-
     <script>
         const leaveReviewBtn = document.getElementById('leaveReviewBtn');
         const reviewModal = document.getElementById('reviewModal');
@@ -341,25 +343,21 @@
         const reviewTextField = document.querySelector('textarea');
         let selectedRating = 0;
 
-        // Open the modal when the "Leave a Review" button is clicked
         leaveReviewBtn.addEventListener('click', () => {
-            resetForm();  // Reset the form every time the modal is opened
+            resetForm();
             reviewModal.style.display = 'flex';
         });
 
-        // Close the modal when the close button is clicked
         closeModalBtn.addEventListener('click', () => {
             reviewModal.style.display = 'none';
         });
 
-        // Close the modal if clicked outside the modal content
         window.addEventListener('click', (event) => {
             if (event.target === reviewModal) {
                 reviewModal.style.display = 'none';
             }
         });
 
-        // Highlight the stars when clicked
         stars.forEach(star => {
             star.addEventListener('click', () => {
                 selectedRating = star.getAttribute('data-value');
@@ -373,26 +371,22 @@
             });
         });
 
-        // Submit the review
         submitReviewBtn.addEventListener('click', () => {
             const reviewText = reviewTextField.value;
             const reviewerName = reviewerNameField.value;
 
-            // Prevent reviews containing "@" symbol
             if (reviewText.includes('@')) {
                 alert('The "@" symbol is not allowed in the review.');
                 return;
             }
 
             if (selectedRating > 0 && reviewText.trim() !== '') {
-                const webhookURL = 'https://discord.com/api/webhooks/1367890958888206439/sADYvIyJfFxIlU4greHWI4w3nzt9NTLTHzrF657KBiOaR4DEWcxcTwm3nJgSqf8DNhxz'; // Replace with your Discord Webhook URL
+                const webhookURL = 'https://discord.com/api/webhooks/1367890958888206439/sADYvIyJfFxIlU4greHWI4w3nzt9NTLTHzrF657KBiOaR4DEWcxcTwm3nJgSqf8DNhxz';
 
-                // Create the message payload
                 const message = {
                     content: `**New Review for NOCLIP VR**\nName: ${reviewerName || 'Anonymous'}\nRating: ${selectedRating} stars\nReview: ${reviewText}`
                 };
 
-                // Send the message to Discord
                 fetch(webhookURL, {
                     method: 'POST',
                     headers: {
@@ -417,12 +411,8 @@
             }
         });
 
-        // Function to reset the form
         function resetForm() {
-            // Deselect all stars
             stars.forEach(star => star.classList.remove('selected'));
-
-            // Clear the review text and name fields
             reviewTextField.value = '';
             reviewerNameField.value = '';
             selectedRating = 0;
