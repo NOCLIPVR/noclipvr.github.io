@@ -64,21 +64,19 @@
             background-color: red;
         }
 
-        /* Centered Leave a Review Button */
+        /* Centered Leave a Review Button in the header */
         .centered-button {
-            display: block;
-            margin: 0 auto;
-            padding: 10px 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: black;
             color: white;
             text-decoration: none;
             font-weight: bold;
+            padding: 10px 20px;
             text-align: center;
             border-radius: 5px;
-            position: fixed;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-top: 5px;
         }
 
         .centered-button:hover {
@@ -255,6 +253,8 @@
             <a href="levels.html">Levels</a>
             <a href="staff.html">Staff</a>
         </nav>
+        <!-- Centered "Leave a Review" Button -->
+        <a href="javascript:void(0);" class="centered-button" id="leaveReviewBtn">Leave a Review</a>
     </header>
 
     <!-- Main Content Section -->
