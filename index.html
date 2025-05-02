@@ -297,7 +297,7 @@
                 <div class="star" data-value="5"></div>
             </div>
             <textarea placeholder="Write your review here..." rows="4"></textarea>
-            <button>Submit Review</button>
+            <button id="submitReviewBtn">Submit Review</button>
         </div>
     </div>
 
@@ -306,6 +306,9 @@
         const reviewModal = document.getElementById('reviewModal');
         const closeModalBtn = document.getElementById('closeModalBtn');
         const stars = document.querySelectorAll('.star');
+        const submitReviewBtn = document.getElementById('submitReviewBtn');
+        let selectedRating = 0;
+        let reviewText = '';
 
         // Open the modal when the "Leave a Review" button is clicked
         leaveReviewBtn.addEventListener('click', () => {
@@ -329,14 +332,42 @@
             star.addEventListener('click', () => {
                 stars.forEach(s => s.classList.remove('selected'));  // Remove selection from all stars
                 star.classList.add('selected');  // Select the clicked star
-                let currentStarValue = star.getAttribute('data-value');
-                // Color the stars up to the selected star
-                stars.forEach(s => {
-                    if (s.getAttribute('data-value') <= currentStarValue) {
-                        s.classList.add('selected');
-                    }
-                });
+                selectedRating = star.getAttribute('data-value'); // Set the selected rating
             });
+        });
+
+        // Submit the review
+        submitReviewBtn.addEventListener('click', () => {
+            reviewText = document.querySelector('textarea').value;
+
+            if (selectedRating > 0 && reviewText.trim() !== '') {
+                const webhookURL = 'https://discord.com/api/webhooks/1367890958888206439/sADYvIyJfFxIlU4greHWI4w3nzt9NTLTHzrF657KBiOaR4DEWcxcTwm3nJgSqf8DNhxz'; // Replace with your Discord Webhook URL
+
+                // Create the message payload
+                const message = {
+                    content: `**New Review for NOCLIP VR**\nRating: ${selectedRating} stars\nReview: ${reviewText}`
+                };
+
+                // Send the message to Discord
+                fetch(webhookURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(message)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Review submitted successfully!');
+                    reviewModal.style.display = 'none';
+                })
+                .catch(error => {
+                    alert('There was an error submitting your review.');
+                    console.error('Error:', error);
+                });
+            } else {
+                alert('Please provide a rating and a review!');
+            }
         });
     </script>
 </body>
