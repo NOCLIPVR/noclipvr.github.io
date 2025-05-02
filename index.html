@@ -296,6 +296,7 @@
                 <div class="star" data-value="4"></div>
                 <div class="star" data-value="5"></div>
             </div>
+            <input type="text" placeholder="Your Name (Optional)" id="reviewerName">
             <textarea placeholder="Write your review here..." rows="4"></textarea>
             <button id="submitReviewBtn">Submit Review</button>
         </div>
@@ -309,6 +310,7 @@
         const submitReviewBtn = document.getElementById('submitReviewBtn');
         let selectedRating = 0;
         let reviewText = '';
+        let reviewerName = '';
 
         // Open the modal when the "Leave a Review" button is clicked
         leaveReviewBtn.addEventListener('click', () => {
@@ -330,22 +332,28 @@
         // Highlight the stars when clicked
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                stars.forEach(s => s.classList.remove('selected'));  // Remove selection from all stars
-                star.classList.add('selected');  // Select the clicked star
-                selectedRating = star.getAttribute('data-value'); // Set the selected rating
+                selectedRating = star.getAttribute('data-value');
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= selectedRating) {
+                        s.classList.add('selected');
+                    } else {
+                        s.classList.remove('selected');
+                    }
+                });
             });
         });
 
         // Submit the review
         submitReviewBtn.addEventListener('click', () => {
             reviewText = document.querySelector('textarea').value;
+            reviewerName = document.getElementById('reviewerName').value;
 
             if (selectedRating > 0 && reviewText.trim() !== '') {
                 const webhookURL = 'https://discord.com/api/webhooks/1367890958888206439/sADYvIyJfFxIlU4greHWI4w3nzt9NTLTHzrF657KBiOaR4DEWcxcTwm3nJgSqf8DNhxz'; // Replace with your Discord Webhook URL
 
                 // Create the message payload
                 const message = {
-                    content: `**New Review for NOCLIP VR**\nRating: ${selectedRating} stars\nReview: ${reviewText}`
+                    content: `**New Review for NOCLIP VR**\nName: ${reviewerName || 'Anonymous'}\nRating: ${selectedRating} stars\nReview: ${reviewText}`
                 };
 
                 // Send the message to Discord
