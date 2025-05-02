@@ -24,6 +24,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px; /* Reduced height */
         }
 
         header h1 {
@@ -40,7 +41,22 @@
 
         nav {
             display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        nav .left {
+            display: flex;
             gap: 10px;
+            position: absolute;
+            left: 20px;
+        }
+
+        nav .right {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            right: 20px;
         }
 
         nav a, .review-btn {
@@ -200,7 +216,6 @@
             margin: 0 5px;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             cursor: pointer;
-
         }
 
         .star.selected {
@@ -224,10 +239,15 @@
             <h1>NOCLIP</h1><h2>VR</h2>
         </div>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="levels.html">Levels</a>
-            <a href="staff.html">Staff</a>
-            <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
+            <div class="review-btn-container" style="margin-left: auto; margin-right: auto;">
+                <!-- Leave a Review button is centered -->
+                <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
+            </div>
+            <div class="right">
+                <!-- These buttons are now right aligned -->
+                <a href="levels.html">Levels</a>
+                <a href="staff.html">Staff</a>
+            </div>
         </nav>
     </header>
 
@@ -255,12 +275,8 @@
     </div>
 
     <!-- Discord and Meta Logos -->
-    <a href="https://discord.gg/noclipvr" target="_blank">
-        <img class="logo discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo">
-    </a>
-    <a href="https://www.meta.com/" target="_blank">
-        <img class="logo meta-logo" src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo">
-    </a>
+    <a href="https://discord.gg/noclipvr" target="_blank"><img class="logo discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo"></a>
+    <a href="https://www.meta.com/" target="_blank"><img class="logo meta-logo" src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo"></a>
 
     <!-- Review Modal -->
     <div class="modal" id="reviewModal">
@@ -305,9 +321,7 @@
         // Highlight the stars when hovered and selected
         stars.forEach(star => {
             star.addEventListener('click', () => {
-
-                stars.forEach(s => s.classList.remove('selected'));
-
+                stars.forEach(s => s.classList.add('selected'));
                 star.classList.add('selected');
             });
         });
