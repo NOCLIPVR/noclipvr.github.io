@@ -38,7 +38,7 @@
     nav {
       display: flex;
       flex-grow: 1;
-      justify-content: center; /* Centering the contents */
+      justify-content: flex-end; /* Move the links to the right side */
       align-items: center;
     }
     nav a {
@@ -147,30 +147,32 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.7);
       justify-content: center;
       align-items: center;
     }
     .modal-content {
       background-color: white;
-      padding: 20px;
+      padding: 30px;
       border-radius: 10px;
-      width: 300px;
+      width: 400px; /* Wider modal */
       text-align: center;
+      box-sizing: border-box;
     }
     .modal input, .modal textarea {
       width: 100%;
       margin: 10px 0;
-      padding: 10px;
-      font-size: 14px;
+      padding: 15px;
+      font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      box-sizing: border-box;
     }
     .modal button {
       background-color: black;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 20px;
       font-size: 16px;
       cursor: pointer;
       border-radius: 5px;
@@ -183,11 +185,11 @@
     .stars {
       display: flex;
       justify-content: center;
-      margin: 10px 0;
+      margin: 20px 0;
     }
     .star {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       background-color: lightgray;
       margin: 0 5px;
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
@@ -258,47 +260,57 @@
         <div class="star" data-value="5"></div>
       </div>
       
-      <textarea placeholder="Write your review here..." rows="4"></textarea>
+      <textarea id="reviewText" placeholder="Write your review here..." rows="5"></textarea>
       <button id="submitReview">Submit Review</button>
-      <button id="closeModal">Cancel</button>
     </div>
   </div>
 
   <script>
-    // Opening the modal
-    const leaveReviewBtn = document.getElementById('leaveReviewBtn');
-    const reviewModal = document.getElementById('reviewModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    
-    leaveReviewBtn.addEventListener('click', () => {
-      reviewModal.style.display = 'flex';
-    });
-    
-    closeModalBtn.addEventListener('click', () => {
-      reviewModal.style.display = 'none';
-    });
+    const reviewBtn = document.getElementById("leaveReviewBtn");
+    const reviewModal = document.getElementById("reviewModal");
+    const starRating = document.getElementById("starRating");
+    const stars = starRating.getElementsByClassName("star");
+    const submitReview = document.getElementById("submitReview");
+    const reviewText = document.getElementById("reviewText");
 
-    // Star Rating functionality
-    const stars = document.querySelectorAll('.star');
-    let selectedRating = 0;
-    
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        selectedRating = star.getAttribute('data-value');
-        stars.forEach(star => {
-          if (star.getAttribute('data-value') <= selectedRating) {
-            star.classList.add('selected');
+    // Open the review modal
+    reviewBtn.onclick = () => {
+      reviewModal.style.display = "flex";
+    };
+
+    // Close the review modal when clicking outside the modal
+    window.onclick = (event) => {
+      if (event.target === reviewModal) {
+        reviewModal.style.display = "none";
+      }
+    };
+
+    // Handle star rating selection
+    Array.from(stars).forEach(star => {
+      star.addEventListener("click", () => {
+        const ratingValue = star.getAttribute("data-value");
+        Array.from(stars).forEach(s => {
+          if (s.getAttribute("data-value") <= ratingValue) {
+            s.classList.add("selected");
           } else {
-            star.classList.remove('selected');
+            s.classList.remove("selected");
           }
         });
       });
     });
 
-    // Submit Review
-    document.getElementById('submitReview').addEventListener('click', () => {
-      alert('Review Submitted! Rating: ' + selectedRating);
-      reviewModal.style.display = 'none';
+    // Handle review submission
+    submitReview.addEventListener("click", () => {
+      const rating = Array.from(stars).filter(star => star.classList.contains("selected")).length;
+      const reviewContent = reviewText.value;
+
+      if (rating && reviewContent) {
+        alert(`Thank you for your review! Rating: ${rating} stars`);
+        reviewModal.style.display = "none";
+        reviewText.value = ''; // Reset review text
+      } else {
+        alert("Please provide both a rating and a review.");
+      }
     });
   </script>
 </body>
