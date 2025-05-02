@@ -55,6 +55,24 @@
     nav a:hover {
       background-color: red;
     }
+    /* New button for "Leave a Review" in the center */
+    .review-btn {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: black;
+      margin: 0;
+      border-radius: 5px;
+      font-weight: bold;
+      display: block;
+      text-align: center;
+      cursor: pointer;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .review-btn:hover {
+      background-color: red;
+    }
     .content {
       padding: 120px 20px 40px;
       max-width: 1000px;
@@ -177,7 +195,8 @@
     <nav>
       <a href="staff.html">Staff</a>
       <a href="levels.html">Levels</a>
-      <a href="javascript:void(0);" id="leaveReviewBtn">Leave a Review</a>
+      <!-- Leave a Review Button in the center -->
+      <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
     </nav>
   </header>
 
@@ -242,42 +261,18 @@
       document.getElementById('reviewModal').style.display = 'none';
     }
 
-    // Submit review to Discord
+    // Submit review
     function submitReview() {
       const rating = document.querySelector('input[name="rating"]:checked');
       const reviewText = document.querySelector('textarea').value;
 
-      // Check if the user has filled in the rating and review
       if (!rating || !reviewText) {
         alert("Please provide a rating and review.");
         return;
       }
 
-      // Create the review data to send to the Discord webhook
-      const reviewData = {
-        username: "Noclip VR Player", // You can change the username if you'd like
-        content: `Rating: ${rating.value} stars\nReview: ${reviewText}`
-      };
-
-      // Send the data to the Discord webhook
-      fetch('https://discord.com/api/webhooks/YOUR_DISCORD_WEBHOOK_URL', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(reviewData)
-      })
-      .then(response => {
-        if (response.ok) {
-          alert("Thank you for your review!");
-          closeModal(); // Close the modal if successful
-        } else {
-          console.error("Failed to send review to Discord:", response.status, response.statusText);
-          alert("There was an error submitting your review. Please try again.");
-        }
-      })
-      .catch(error => {
-        console.error("Network error:", error);
-        alert("There was an error submitting your review. Please try again.");
-      });
+      alert("Thank you for your review!");
+      closeModal(); // Close the modal after submission
     }
   </script>
 </body>
