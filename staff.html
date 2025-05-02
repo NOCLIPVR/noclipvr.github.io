@@ -216,17 +216,26 @@
   <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto"></audio>
 
   <script>
-    // JavaScript function to play the sound when the eerie figure is clicked
+    // JavaScript function to play the sound when the eerie figure is clicked or tapped
     function playSound(event) {
-      // Check if the click is on the eerie figure
+      // Check if the click/touch is on the eerie figure
       if (event.target.classList.contains('eerie-figure')) {
         var audio = document.getElementById('eerieSound');
+        
+        // Ensure the audio is loaded and ready to play
+        audio.load();
+        
+        // Play the sound
         audio.play();
       }
     }
 
-    // Add event listener for click event
-    document.body.addEventListener('click', playSound);
+    // Add event listener for both 'click' (PC) and 'touchstart' (Mobile) events on mobile devices
+    if (window.innerWidth <= 1024) {
+      document.body.addEventListener('touchstart', playSound);
+    } else {
+      document.body.addEventListener('click', playSound);
+    }
   </script>
 
   <!-- Eerie "Press Me" text for both PC and Mobile -->
