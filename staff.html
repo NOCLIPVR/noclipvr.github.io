@@ -220,15 +220,15 @@
     <button id="pressMeButton" class="press-me-button" style="display:none;">Press Me</button>
   </div>
 
-  <!-- Add the audio element to play the sound -->
-  <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto"></audio>
+  <!-- Add the video element (hidden for audio playback) -->
+  <video id="eerieVideo" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto" style="display:none;"></video>
 
   <script>
-    // JavaScript function to play the sound when the button is clicked or tapped
+    // JavaScript function to play the sound from the video when the button is clicked or tapped
     function playSound() {
-      var audio = document.getElementById('eerieSound');
-      audio.load(); // Make sure audio is loaded
-      audio.play(); // Play the audio
+      var video = document.getElementById('eerieVideo');
+      video.currentTime = 0; // Reset video to the beginning
+      video.play(); // Play the audio from the video
     }
 
     // Show the "Press Me" button only on mobile devices
