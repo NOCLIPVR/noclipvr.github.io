@@ -45,10 +45,10 @@
 
     nav.navbar {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       width: 100%;
       margin-top: 10px;
-      justify-content: space-between;
     }
 
     nav a, .review-btn {
@@ -231,7 +231,10 @@
     </div>
     <nav class="navbar">
       <a href="index.html">Home</a>
-      <a href="staff.html">Staff</a>
+      <div style="flex-grow: 1; text-align: right;">
+        <a href="staff.html">Staff</a>
+        <a href="levels.html">Levels</a>
+      </div>
       <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
     </nav>
   </header>
