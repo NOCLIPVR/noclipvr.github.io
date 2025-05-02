@@ -12,6 +12,9 @@
             background-size: cover;
             color: white;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Mobile-specific background */
@@ -254,9 +257,7 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+            margin-top: auto;  /* Ensure footer is at the bottom */
         }
 
         footer a {
@@ -326,6 +327,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <p><a href="https://discord.com/users/1271801728492109876" target="_blank">Website created by §</a></p>
     </footer>
