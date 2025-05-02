@@ -29,10 +29,6 @@
         text-align: center;
         z-index: 1000;
       }
-
-      .press-me-button {
-        display: none; /* Hide the "Press Me" button on PC */
-      }
     }
 
     /* Mobile & Tablet Styles */
@@ -41,119 +37,18 @@
         padding-bottom: 100px; /* Ensure space for the "Press Me" button at the bottom */
       }
 
-      .press-me-button {
-        display: block;
-        width: 100%;
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 15px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-top: 20px;
-        text-align: center;
-      }
-
-      .press-me-button:hover {
-        background-color: darkred;
-      }
-
       .eerie-figure {
-        display: none; /* Hide the eerie figure on mobile */
-      }
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: black;
-      padding: 10px 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-      color: red;
-    }
-
-    header h2 {
-      margin: 0;
-      font-size: 24px;
-      color: white;
-    }
-
-    nav {
-      display: flex;
-      width: 200px;
-      justify-content: flex-start;
-      margin-right
-
-
-You said:
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Staff - Noclip VR</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://cdn.discordapp.com/attachments/1222997344690372628/1367567914038726686/Screenshot_2025-05-01_192349.png?ex=68150e5e&is=6813bcde&hm=f415a8e3f63e61c3c8c3340562ff0f2ea3dc502f92a5cf0af8dec26ab7f3a58b&') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      overflow-x: hidden;
-      height: 100%;
-    }
-
-    /* PC Only Styles */
-    @media (min-width: 1025px) {
-      .eerie-figure {
-        position: fixed;
-        right: 40px;
-        top: 50%;
-        transform: translateY(-50%);
+        position: relative;
+        margin-top: 10px; /* Move it higher by adjusting this margin */
         font-size: 24px;
         font-weight: bold;
         color: white;
         cursor: pointer;
         text-align: center;
         z-index: 1000;
-      }
-    }
-
-    /* Mobile & Tablet Styles */
-    @media (max-width: 1024px) {
-      .staff-grid {
-        padding-bottom: 100px; /* Ensure space for the "Press Me" button at the bottom */
-      }
-
-      .press-me-button {
-        display: block;
         width: 100%;
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 15px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-top: 20px;
         text-align: center;
-      }
-      
-      .press-me-button:hover {
-        background-color: darkred;
+        display: block;
       }
     }
 
@@ -315,27 +210,27 @@ You said:
         </ul>
       </div>
     </div>
-
-    <!-- Mobile Only Press Me Button -->
-    <button id="pressMeButton" class="press-me-button" style="display:none;">Press Me</button>
   </div>
 
   <!-- Add the audio element to play the sound -->
   <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto"></audio>
 
   <script>
-    // JavaScript function to play the sound when the button is clicked or tapped
-    function playSound() {
-      var audio = document.getElementById('eerieSound');
-      audio.load(); // Make sure audio is loaded
-      audio.play(); // Play the audio
+    // JavaScript function to play the sound when the eerie figure is clicked
+    function playSound(event) {
+      // Check if the click is on the eerie figure
+      if (event.target.classList.contains('eerie-figure')) {
+        var audio = document.getElementById('eerieSound');
+        audio.play();
+      }
     }
 
-    // Show the "Press Me" button only on mobile devices
-    if (window.innerWidth <= 1024) {
-      document.getElementById('pressMeButton').style.display = 'block';
-      document.getElementById('pressMeButton').addEventListener('click', playSound);
-    }
+    // Add event listener for click event
+    document.body.addEventListener('click', playSound);
   </script>
+
+  <!-- Eerie "Press Me" text for both PC and Mobile -->
+  <div class="eerie-figure">Press Me</div>
+
 </body>
 </html>
