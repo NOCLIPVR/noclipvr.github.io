@@ -14,34 +14,80 @@
             overflow-x: hidden;
         }
 
-        /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             background-color: black;
-            padding: 10px 0; /* Padding adjusted to match second header */
-            height: 50px; /* Set exact height from the second header */
+            padding: 10px 20px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        header h1, header h2 {
-            margin: 0;
-            font-size: 24px; /* Font size adjusted to match second header */
-        }
-
         header h1 {
+            margin: 0;
+            font-size: 24px;
             color: red;
         }
 
         header h2 {
+            margin: 0;
+            font-size: 24px;
             color: white;
         }
 
-        /* Main content */
+        nav {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        nav .left {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            left: 20px;
+
+
+
+
+
+        }
+
+        nav .right {
+
+
+
+
+
+
+            display: flex;
+            gap: 10px;
+
+            position: absolute;
+            right: 20px;
+
+
+
+        }
+
+        nav a, .review-btn {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: black;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        nav a:hover, .review-btn:hover {
+            background-color: red;
+        }
+
         .content {
             padding: 120px 20px 40px;
             max-width: 1000px;
@@ -169,6 +215,7 @@
 
         .modal button:hover {
             background-color: red;
+
         }
 
         .stars {
@@ -188,6 +235,8 @@
 
         .star.selected {
             background-color: gold;
+
+
         }
 
         .close-btn {
@@ -206,6 +255,17 @@
         <div>
             <h1>NOCLIP</h1><h2>VR</h2>
         </div>
+        <nav>
+            <div class="review-btn-container" style="margin-left: auto; margin-right: auto;">
+                <!-- Leave a Review button is centered -->
+                <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
+            </div>
+            <div class="right">
+                <!-- These buttons are now right aligned -->
+                <a href="levels.html">Levels</a>
+                <a href="staff.html">Staff</a>
+            </div>
+        </nav>
     </header>
 
     <!-- Main Content Section -->
@@ -235,5 +295,59 @@
     <a href="https://discord.gg/noclipvr" target="_blank"><img class="logo discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo"></a>
     <a href="https://www.meta.com/" target="_blank"><img class="logo meta-logo" src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo"></a>
 
+    <!-- Review Modal -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+            <h3>Leave a Review</h3>
+            <div class="stars">
+                <div class="star" data-value="1"></div>
+                <div class="star" data-value="2"></div>
+                <div class="star" data-value="3"></div>
+                <div class="star" data-value="4"></div>
+                <div class="star" data-value="5"></div>
+            </div>
+            <textarea placeholder="Write your review here..." rows="4"></textarea>
+            <button>Submit Review</button>
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <script>
+        const leaveReviewBtn = document.getElementById('leaveReviewBtn');
+        const reviewModal = document.getElementById('reviewModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const stars = document.querySelectorAll('.star');
+
+        // Open the modal when the "Leave a Review" button is clicked
+        leaveReviewBtn.addEventListener('click', () => {
+            reviewModal.style.display = 'flex';
+        });
+
+        // Close the modal when the close button is clicked
+        closeModalBtn.addEventListener('click', () => {
+            reviewModal.style.display = 'none';
+        });
+
+        // Close the modal if clicked outside the modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === reviewModal) {
+                reviewModal.style.display = 'none';
+            }
+        });
+
+        // Highlight the stars when hovered and selected
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                stars.forEach(s => s.classList.add('selected'));
+                star.classList.add('selected');
+            });
+        });
+    </script>
 </body>
 </html>
