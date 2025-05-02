@@ -37,18 +37,23 @@
         padding-bottom: 100px; /* Ensure space for the "Press Me" button at the bottom */
       }
 
-      .eerie-figure {
-        position: relative;
-        margin-top: 10px; /* Move it higher by adjusting this margin */
-        font-size: 24px;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-        text-align: center;
-        z-index: 1000;
-        width: 100%;
-        text-align: center;
+      .press-me-button {
         display: block;
+        width: 100%;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+      }
+      
+      .press-me-button:hover {
+        background-color: darkred;
       }
     }
 
@@ -210,36 +215,27 @@
         </ul>
       </div>
     </div>
+
+    <!-- Mobile Only Press Me Button -->
+    <button id="pressMeButton" class="press-me-button" style="display:none;">Press Me</button>
   </div>
 
   <!-- Add the audio element to play the sound -->
   <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto"></audio>
 
   <script>
-    // JavaScript function to play the sound when the eerie figure is clicked or tapped
-    function playSound(event) {
-      // Check if the click/touch is on the eerie figure
-      if (event.target.classList.contains('eerie-figure')) {
-        var audio = document.getElementById('eerieSound');
-        
-        // Ensure the audio is loaded and ready to play
-        audio.load();
-        
-        // Play the sound
-        audio.play();
-      }
+    // JavaScript function to play the sound when the button is clicked or tapped
+    function playSound() {
+      var audio = document.getElementById('eerieSound');
+      audio.load(); // Make sure audio is loaded
+      audio.play(); // Play the audio
     }
 
-    // Add event listener for both 'click' (PC) and 'touchstart' (Mobile) events on mobile devices
+    // Show the "Press Me" button only on mobile devices
     if (window.innerWidth <= 1024) {
-      document.body.addEventListener('touchstart', playSound);
-    } else {
-      document.body.addEventListener('click', playSound);
+      document.getElementById('pressMeButton').style.display = 'block';
+      document.getElementById('pressMeButton').addEventListener('click', playSound);
     }
   </script>
-
-  <!-- Eerie "Press Me" text for both PC and Mobile -->
-  <div class="eerie-figure">Press Me</div>
-
 </body>
 </html>
