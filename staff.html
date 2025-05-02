@@ -39,7 +39,7 @@
 
       .eerie-figure {
         position: relative;
-        margin-top: -10px; /* Adjusted margin to move the "Press Me" button slightly higher */
+        margin-top: 10px; /* Move it higher by adjusting this margin */
         font-size: 24px;
         font-weight: bold;
         color: white;
@@ -216,18 +216,21 @@
   <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1298068869356847149/1367984485311709204/Untitled_video_-_Made_with_Clipchamp_8.mp3?ex=68169255&is=681540d5&hm=a279828e744a16bb96e4215a0c9da0a25860b4e72e35a2da4a05f5dadd0540fa" preload="auto"></audio>
 
   <script>
-    // JavaScript function to play the sound when the button is clicked or tapped
-    function playSound() {
-      var audio = document.getElementById('eerieSound');
-      audio.load(); // Make sure audio is loaded
-      audio.play(); // Play the audio
+    // JavaScript function to play the sound when the eerie figure is clicked
+    function playSound(event) {
+      // Check if the click is on the eerie figure
+      if (event.target.classList.contains('eerie-figure')) {
+        var audio = document.getElementById('eerieSound');
+        audio.play();
+      }
     }
 
-    // Add the event listener to the "Press Me" button
-    document.querySelector('.eerie-figure').addEventListener('click', playSound);
+    // Add event listener for click event
+    document.body.addEventListener('click', playSound);
   </script>
 
   <!-- Eerie "Press Me" text for both PC and Mobile -->
   <div class="eerie-figure">Press Me</div>
+
 </body>
 </html>
