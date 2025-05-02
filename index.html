@@ -14,7 +14,6 @@
             overflow-x: hidden;
         }
 
-        /* Header styling matching the first code */
         header {
             position: fixed;
             top: 0;
@@ -25,7 +24,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
             padding: 0 20px;
         }
 
@@ -43,24 +41,36 @@
 
         nav {
             display: flex;
-            width: auto;
-            justify-content: flex-start;
-            margin-right: 20px;
+            justify-content: center;
+            width: 100%;
         }
 
-        nav a {
+        nav .left {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            left: 20px;
+        }
+
+        nav .right {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            right: 20px;
+        }
+
+        nav a, .review-btn {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
             background-color: black;
-            margin: 0 5px;
             border-radius: 5px;
             font-weight: bold;
-            display: block;
             text-align: center;
+            cursor: pointer;
         }
 
-        nav a:hover {
+        nav a:hover, .review-btn:hover {
             background-color: red;
         }
 
@@ -229,9 +239,15 @@
             <h1>NOCLIP</h1><h2>VR</h2>
         </div>
         <nav>
-            <a href="levels.html">Levels</a>
-            <a href="staff.html">Staff</a>
-            <a href="javascript:void(0)" id="leaveReviewBtn">Leave a Review</a>
+            <div class="review-btn-container" style="margin-left: auto; margin-right: auto;">
+                <!-- Leave a Review button is centered -->
+                <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
+            </div>
+            <div class="right">
+                <!-- These buttons are now right aligned -->
+                <a href="levels.html">Levels</a>
+                <a href="staff.html">Staff</a>
+            </div>
         </nav>
     </header>
 
@@ -245,22 +261,9 @@
 
         <h2>A Multiplayer Horror Experience</h2>
 
-        <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
-
-        <p>
-            Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
-            <br><br>
-            Invite your friends and noclip out of the frontrooms now!
-            <br><br>
-            "If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms, where it's nothing but the stink of old moist carpet, the madness of mono-yellow, the endless background noise of fluorescent lights at maximum hum-buzz, and approximately six hundred million square miles of randomly segmented empty rooms to be trapped in.
-            <br><br>
-            God save you if you hear something wandering around nearby, because it sure as hell has heard you."
-        </p>
+        <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&width=674&height=424" alt="NOCLIP VR">
+        <p>Experience the world of horror with NOCLIP VR. Dive into the next-level VR gameplay with friends and immerse yourself in a thrilling, multiplayer adventure.</p>
     </div>
-
-    <!-- Discord and Meta Logos -->
-    <a href="https://discord.gg/noclipvr" target="_blank"><img class="logo discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo"></a>
-    <a href="https://www.meta.com/" target="_blank"><img class="logo meta-logo" src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo"></a>
 
     <!-- Review Modal -->
     <div class="modal" id="reviewModal">
@@ -280,33 +283,41 @@
     </div>
 
     <script>
-        const leaveReviewBtn = document.getElementById('leaveReviewBtn');
-        const reviewModal = document.getElementById('reviewModal');
+        // Modal toggle
+        const modal = document.getElementById('reviewModal');
+        const openModalBtn = document.getElementById('leaveReviewBtn');
         const closeModalBtn = document.getElementById('closeModalBtn');
-        const stars = document.querySelectorAll('.star');
 
-        // Open the modal when the "Leave a Review" button is clicked
-        leaveReviewBtn.addEventListener('click', () => {
-            reviewModal.style.display = 'flex';
+        openModalBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
         });
 
-        // Close the modal when the close button is clicked
         closeModalBtn.addEventListener('click', () => {
-            reviewModal.style.display = 'none';
+            modal.style.display = 'none';
         });
 
-        // Close the modal if clicked outside the modal content
-        window.addEventListener('click', (event) => {
-            if (event.target === reviewModal) {
-                reviewModal.style.display = 'none';
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
             }
         });
 
-        // Highlight the stars when hovered and selected
+        // Review Star functionality
+        const stars = document.querySelectorAll('.star');
+
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                stars.forEach(s => s.classList.add('selected'));
-                star.classList.add('selected');
+                const rating = star.getAttribute('data-value'); // Get the value of the clicked star
+
+                // Remove the 'selected' class from all stars
+                stars.forEach(s => s.classList.remove('selected'));
+
+                // Add the 'selected' class to the stars up to the clicked star
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= rating) {
+                        s.classList.add('selected');
+                    }
+                });
             });
         });
     </script>
