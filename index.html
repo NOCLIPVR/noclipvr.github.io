@@ -56,21 +56,32 @@
       background-color: red;
     }
 
-    /* Center the "Leave a Review" Button */
+    /* Stylish "Leave a Review" Button */
     #review-button {
       color: white;
       text-decoration: none;
-      padding: 10px 20px;
-      background-color: black;
+      padding: 12px 30px;
+      background-color: #007BFF; /* Blue */
       margin: 0;
-      border-radius: 5px;
+      border-radius: 50px;
       font-weight: bold;
+      font-size: 16px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
     #review-button:hover {
-      background-color: red;
+      background-color: #0056b3; /* Darker blue */
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+    #review-button:focus {
+      outline: none;
     }
 
     /* Modal Styles */
@@ -185,8 +196,10 @@
       <a href="staff.html">Staff</a>
       <a href="levels.html">Levels</a>
     </nav>
-    <!-- Centered "Leave a Review" Button -->
-    <button id="review-button">Leave a Review</button>
+    <!-- Professional "Leave a Review" Button -->
+    <button id="review-button">
+      <span style="margin-right: 8px;">📝</span> Leave a Review
+    </button>
   </header>
 
   <!-- Modal for Review Form -->
@@ -267,34 +280,16 @@
       });
     });
 
-    // Submit review and send data to Discord webhook
+    // Submit review
     document.getElementById('submit-review').addEventListener('click', function() {
       const reviewText = document.getElementById('review-text').value;
-
       if (selectedRating > 0 && reviewText) {
-        const reviewData = {
-          content: `New Review for Noclip VR:\nRating: ${selectedRating} stars\nReview: ${reviewText}`
-        };
-
-        fetch('YOUR_DISCORD_WEBHOOK_URL', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(reviewData)
-        }).then(response => {
-          if (response.ok) {
-            alert('Review submitted successfully!');
-            document.getElementById('reviewModal').style.display = 'none';
-          } else {
-            alert('There was an error submitting your review.');
-          }
-        });
+        alert(`Review Submitted!\nRating: ${selectedRating} stars\nReview: ${reviewText}`);
+        document.getElementById('reviewModal').style.display = 'none';
       } else {
-        alert('Please provide both a rating and a review.');
+        alert('Please select a rating and write a review.');
       }
     });
   </script>
-
 </body>
 </html>
