@@ -22,13 +22,8 @@
       padding: 10px 20px;
       z-index: 1000;
       display: flex;
-      flex-direction: column;
-    }
-
-    header .branding {
-      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 10px;
     }
 
     header h1 {
@@ -43,12 +38,9 @@
       color: white;
     }
 
-    nav.navbar {
+    nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      margin-top: 10px;
+      gap: 10px;
     }
 
     nav a, .review-btn {
@@ -67,7 +59,7 @@
     }
 
     .content {
-      padding: 160px 20px 40px;
+      padding: 120px 20px 40px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
@@ -141,7 +133,7 @@
         margin-bottom: 10px;
       }
 
-      nav.navbar {
+      nav {
         flex-direction: column;
         gap: 10px;
       }
@@ -225,17 +217,16 @@
   </style>
 </head>
 <body>
+  <!-- Header from Staff Page -->
   <header>
-    <div class="branding">
+    <div>
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
-    <nav class="navbar">
+    <nav>
       <a href="index.html">Home</a>
-      <div style="flex-grow: 1; text-align: right;">
-        <a href="staff.html">Staff</a>
-        <a href="levels.html">Levels</a>
-      </div>
-      <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
+      <a href="levels.html">Levels</a>
+      <a href="staff.html">Staff</a>
+      <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
     </nav>
   </header>
 
