@@ -37,23 +37,9 @@
     }
     nav {
       display: flex;
-      width: 100%;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav .nav-left {
-      display: flex;
-      justify-content: flex-start;
-      width: 100%;
-    }
-    nav .nav-center {
-      display: flex;
-      justify-content: center;
       flex-grow: 1;
-    }
-    nav .nav-right {
-      display: flex;
-      justify-content: flex-end;
+      justify-content: center; /* Center the content */
+      align-items: center;
     }
     nav a {
       color: white;
@@ -80,6 +66,7 @@
       display: block;
       text-align: center;
       cursor: pointer;
+      margin-left: 20px;
     }
     .review-btn:hover {
       background-color: red;
@@ -230,14 +217,10 @@
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
     <nav>
-      <div class="nav-left"></div>
-      <div class="nav-center">
-        <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
-      </div>
-      <div class="nav-right">
-        <a href="staff.html">Staff</a>
-        <a href="levels.html">Levels</a>
-      </div>
+      <a href="staff.html">Staff</a>
+      <a href="levels.html">Levels</a>
+      <!-- Leave a Review Button in the center -->
+      <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
     </nav>
   </header>
 
