@@ -14,7 +14,7 @@
             overflow-x: hidden;
         }
 
-        /* Header styling matching the first code */
+        /* Header styling */
         header {
             position: fixed;
             top: 0;
@@ -62,6 +62,13 @@
 
         nav a:hover {
             background-color: red;
+        }
+
+        /* New CSS for centering the "Leave a Review" button */
+        #leaveReviewBtn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .content {
@@ -231,8 +238,8 @@
         <nav>
             <a href="levels.html">Levels</a>
             <a href="staff.html">Staff</a>
-            <a href="javascript:void(0)" id="leaveReviewBtn">Leave a Review</a>
         </nav>
+        <a href="javascript:void(0)" id="leaveReviewBtn">Leave a Review</a> <!-- Centered Button -->
     </header>
 
     <!-- Main Content Section -->
@@ -305,13 +312,8 @@
         // Highlight the stars when hovered and selected
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                const rating = star.getAttribute('data-value');
-                stars.forEach(s => s.classList.remove('selected'));
-                stars.forEach(s => {
-                    if (s.getAttribute('data-value') <= rating) {
-                        s.classList.add('selected');
-                    }
-                });
+                stars.forEach(s => s.classList.add('selected'));
+                star.classList.add('selected');
             });
         });
     </script>
