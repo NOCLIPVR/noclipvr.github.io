@@ -40,13 +40,25 @@
 
         nav {
             display: flex;
-            gap: 10px;
-            flex-grow: 1;
-            justify-content: flex-end;
-            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
-        nav a {
+        nav .left {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            left: 20px;
+        }
+
+        nav .right {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            right: 20px;
+        }
+
+        nav a, .review-btn {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -57,22 +69,7 @@
             cursor: pointer;
         }
 
-        nav a:hover {
-            background-color: red;
-        }
-
-        .review-btn {
-            background-color: black;
-            color: white;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-            margin-left: 20px;
-        }
-
-        .review-btn:hover {
+        nav a:hover, .review-btn:hover {
             background-color: red;
         }
 
@@ -241,9 +238,15 @@
             <h1>NOCLIP</h1><h2>VR</h2>
         </div>
         <nav>
-            <a href="levels.html">Levels</a>
-            <a href="staff.html">Staff</a>
-            <div class="review-btn" id="leaveReviewBtn">Leave a Review</div>
+            <div class="left">
+                <!-- These buttons are now left aligned -->
+                <a href="levels.html">Levels</a>
+                <a href="staff.html">Staff</a>
+            </div>
+            <div class="review-btn-container">
+                <!-- Leave a Review button is centered -->
+                <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
+            </div>
         </nav>
     </header>
 
@@ -271,8 +274,8 @@
     </div>
 
     <!-- Logos -->
-    <a href="https://discord.gg/noclipvr" target="_blank"><img class="logo discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo"></a>
-    <a href="https://www.meta.com/" target="_blank"><img class="logo meta-logo" src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo"></a>
+    <a href="https://discord.gg/noclipvr" target="_blank"><img class="logo discord-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Discord_Logo_2023.png/600px-Discord_Logo_2023.png" alt="Discord"></a>
+    <a href="https://www.meta.com/" target="_blank"><img class="logo meta-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Meta_logo_2022.svg/1920px-Meta_logo_2022.svg.png" alt="Meta"></a>
 
     <!-- Review Modal -->
     <div class="modal" id="reviewModal">
@@ -314,17 +317,11 @@
             }
         });
 
-        // Make stars stay colored once clicked
+        // Highlight the stars when hovered and selected
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                // Color all stars up to the clicked one
-                stars.forEach(s => {
-                    if (parseInt(s.getAttribute('data-value')) <= parseInt(star.getAttribute('data-value'))) {
-                        s.classList.add('selected');
-                    } else {
-                        s.classList.remove('selected');
-                    }
-                });
+                stars.forEach(s => s.classList.add('selected'));
+                star.classList.add('selected');
             });
         });
     </script>
