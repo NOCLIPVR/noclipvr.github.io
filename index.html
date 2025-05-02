@@ -41,9 +41,12 @@
         nav {
             display: flex;
             gap: 10px;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
         }
 
-        nav a, .review-btn {
+        nav a {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -54,7 +57,22 @@
             cursor: pointer;
         }
 
-        nav a:hover, .review-btn:hover {
+        nav a:hover {
+            background-color: red;
+        }
+
+        .review-btn {
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            margin-left: 20px;
+        }
+
+        .review-btn:hover {
             background-color: red;
         }
 
@@ -223,10 +241,9 @@
             <h1>NOCLIP</h1><h2>VR</h2>
         </div>
         <nav>
-            <a href="index.html" id="homeLink">Home</a>
             <a href="levels.html">Levels</a>
             <a href="staff.html">Staff</a>
-            <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
+            <div class="review-btn" id="leaveReviewBtn">Leave a Review</div>
         </nav>
     </header>
 
