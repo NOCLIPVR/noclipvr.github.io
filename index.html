@@ -1,259 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOCLIP VR</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://img.freepik.com/premium-photo/abstract-circular-red-background_8466-2.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOCLIP VR</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://img.freepik.com/premium-photo/abstract-circular-red-background_8466-2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            overflow-x: hidden;
+        }
 
-    /* Header Section */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: black;
-      padding: 10px 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: black;
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px; /* Reduced height */
+        }
 
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-      color: red;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: red;
+        }
 
-    header h2 {
-      margin: 0;
-      font-size: 24px;
-      color: white;
-    }
+        header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
 
-    nav {
-      display: flex;
-      justify-content: flex-start;
-      margin-right: 20px;
-    }
+        nav {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      background-color: black;
-      margin: 0;
-      border-radius: 5px;
-      font-weight: bold;
-      display: block;
-      text-align: center;
-    }
+        nav .left {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            left: 20px;
+        }
 
-    nav a:hover {
-      background-color: red;
-    }
+        nav .right {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            right: 20px;
+        }
 
-    /* Content Section */
-    .content {
-      padding: 120px 20px 60px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-    }
+        nav a, .review-btn {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: black;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
 
-    .content h1 {
-      font-size: 48px;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-      -webkit-text-stroke: 1px black;
-      letter-spacing: 2px;
-    }
+        nav a:hover, .review-btn:hover {
+            background-color: red;
+        }
 
-    .content p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
+        .content {
+            padding: 120px 20px 40px;
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
 
-    .logo {
-      position: absolute;
-      bottom: 20px;
-      width: 200px;
-      height: auto;
-      transition: transform 0.3s ease-in-out;
-    }
+        .content h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            -webkit-text-stroke: 2px black;
+        }
 
-    .discord-logo {
-      left: 20px;
-    }
+        .content h1 span {
+            color: red;
+        }
 
-    .meta-logo {
-      right: 20px;
-    }
+        .content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: black;
+        }
 
-    .logo:hover {
-      transform: scale(1.2);
-    }
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-    }
+        .content img {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
 
-    .modal-content {
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      width: 400px;
-      text-align: center;
-      box-sizing: border-box;
-      position: relative;
-    }
+        .content video {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
 
-    .modal input, .modal textarea {
-      width: 100%;
-      margin: 10px 0;
-      padding: 15px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
+        .logo {
+            position: absolute;
+            bottom: 20px;
+            width: 200px;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
 
-    .modal button {
-      background-color: black;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-      width: 100%;
-    }
+        .discord-logo {
+            left: 20px;
+        }
 
-    .modal button:hover {
-      background-color: red;
-    }
+        .meta-logo {
+            right: 20px;
+        }
 
-    .stars {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-    }
+        .logo:hover {
+            transform: scale(1.2);
+        }
 
-    .star {
-      width: 40px;
-      height: 40px;
-      background-color: lightgray;
-      margin: 0 5px;
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      cursor: pointer;
-    }
+        @media only screen and (max-width: 768px) {
+            .logo {
+                position: static;
+                display: block;
+                margin: 20px auto 0;
+                width: 120px;
+            }
 
-    .star.selected {
-      background-color: gold;
-    }
+            .discord-logo, .meta-logo {
+                margin-bottom: 10px;
+            }
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 30px;
-      cursor: pointer;
-      color: black;
-    }
-  </style>
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .modal input, .modal textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .modal button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .modal button:hover {
+            background-color: red;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .star {
+            width: 40px;
+            height: 40px;
+            background-color: lightgray;
+            margin: 0 5px;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            cursor: pointer;
+        }
+
+        .star.selected {
+            background-color: gold;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            color: black;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header Section -->
-  <header>
-    <div>
-      <h1>NOCLIP</h1><h2>VR</h2>
+    <!-- Header Section -->
+    <header>
+        <div>
+            <h1>NOCLIP</h1><h2>VR</h2>
+        </div>
+        <nav>
+            <div class="review-btn-container" style="margin-left: auto; margin-right: auto;">
+                <!-- Leave a Review button is centered -->
+                <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
+            </div>
+            <div class="right">
+                <!-- These buttons are now right aligned -->
+                <a href="levels.html">Levels</a>
+                <a href="staff.html">Staff</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="content">
+        <h1><span>NOCLIP</span> VR</h1>
+        <video controls>
+            <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h2>A Multiplayer Horror Experience</h2>
+
+        <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
+
+        <p>
+            Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
+            <br><br>
+            Invite your friends and noclip out of the frontrooms now!
+            <br><br>
+            "If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms, where it's nothing but the stink of old moist carpet, the madness of mono-yellow, the endless background noise of fluorescent lights at maximum hum-buzz, and approximately six hundred million square miles of randomly segmented empty rooms to be trapped in.
+            <br><br>
+            God save you if you hear something wandering around nearby, because it sure as hell has heard you."
+        </p>
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="levels.html">Levels</a>
-      <a href="staff.html">Staff</a>
-    </nav>
-  </header>
 
-  <!-- Main Content Section -->
-  <div class="content">
-    <h1><span>NOCLIP</span> VR</h1>
-    <p>
-      Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
-      <br><br>
-      Invite your friends and noclip out of the frontrooms now!
-    </p>
-  </div>
+    <!-- Discord and Meta Logos -->
+    <a href="https://discord.gg/noclipvr" target="_blank"><img class="logo discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo"></a>
+    <a href="https://www.meta.com/" target="_blank"><img class="logo meta-logo" src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo"></a>
 
-  <!-- Discord and Meta Logos -->
-  <a href="https://discord.gg/noclipvr" target="_blank"><img class="logo discord-logo" src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo"></a>
-  <a href="https://www.meta.com/" target="_blank"><img class="logo meta-logo" src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo"></a>
-
-  <!-- Review Modal -->
-  <div class="modal" id="reviewModal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeModalBtn">&times;</span>
-      <h3>Leave a Review</h3>
-      <div class="stars">
-        <div class="star" data-value="1"></div>
-        <div class="star" data-value="2"></div>
-        <div class="star" data-value="3"></div>
-        <div class="star" data-value="4"></div>
-        <div class="star" data-value="5"></div>
-      </div>
-      <textarea placeholder="Write your review here..." rows="4"></textarea>
-      <button>Submit Review</button>
+    <!-- Review Modal -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+            <h3>Leave a Review</h3>
+            <div class="stars">
+                <div class="star" data-value="1"></div>
+                <div class="star" data-value="2"></div>
+                <div class="star" data-value="3"></div>
+                <div class="star" data-value="4"></div>
+                <div class="star" data-value="5"></div>
+            </div>
+            <textarea placeholder="Write your review here..." rows="4"></textarea>
+            <button>Submit Review</button>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const leaveReviewBtn = document.getElementById('leaveReviewBtn');
-    const reviewModal = document.getElementById('reviewModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const stars = document.querySelectorAll('.star');
+    <script>
+        const leaveReviewBtn = document.getElementById('leaveReviewBtn');
+        const reviewModal = document.getElementById('reviewModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const stars = document.querySelectorAll('.star');
 
-    // Open the modal when the "Leave a Review" button is clicked
-    leaveReviewBtn.addEventListener('click', () => {
-      reviewModal.style.display = 'flex';
-    });
+        // Open the modal when the "Leave a Review" button is clicked
+        leaveReviewBtn.addEventListener('click', () => {
+            reviewModal.style.display = 'flex';
+        });
 
-    // Close the modal when the close button is clicked
-    closeModalBtn.addEventListener('click', () => {
-      reviewModal.style.display = 'none';
-    });
+        // Close the modal when the close button is clicked
+        closeModalBtn.addEventListener('click', () => {
+            reviewModal.style.display = 'none';
+        });
 
-    // Close the modal if clicked outside the modal content
-    window.addEventListener('click', (event) => {
-      if (event.target === reviewModal) {
-        reviewModal.style.display = 'none';
-      }
-    });
+        // Close the modal if clicked outside the modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === reviewModal) {
+                reviewModal.style.display = 'none';
+            }
+        });
 
-    // Highlight the stars when hovered and selected
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        stars.forEach(s => s.classList.add('selected'));
-        star.classList.add('selected');
-      });
-    });
-  </script>
+        // Highlight the stars when hovered and selected
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                stars.forEach(s => s.classList.add('selected'));
+                star.classList.add('selected');
+            });
+        });
+    </script>
 </body>
 </html>
