@@ -225,8 +225,8 @@
       <a href="staff.html">Staff</a>
       <a href="levels.html">Levels</a>
     </nav>
-    <!-- Centered "Leave a Suggestion" Button -->
-    <button id="review-button">Leave a Suggestion</button>
+    <!-- Centered "Leave a Review" Button -->
+    <button id="review-button">Leave a Review</button>
   </header>
 
   <!-- Modal for Leave a Review -->
@@ -286,29 +286,45 @@
   </a>
 
   <script>
-    // Show Modal
-    document.getElementById('review-button').addEventListener('click', function() {
+    // Open the review modal
+    document.getElementById('review-button').onclick = function() {
       document.getElementById('review-modal').style.display = 'flex';
-    });
+    };
 
-    // Close Modal
+    // Close the review modal
     function closeModal() {
       document.getElementById('review-modal').style.display = 'none';
     }
 
-    // Submit Review (Placeholder)
+    // Submit the review and send it to Discord
     function submitReview() {
       const rating = document.querySelector('input[name="rating"]:checked');
       const reviewText = document.querySelector('textarea').value;
 
-      if (rating && reviewText) {
-        alert("Review submitted: " + reviewText);
-        closeModal();
-      } else {
-        alert("Please provide a rating and a review.");
+      if (!rating || !reviewText) {
+        alert("Please provide a rating and review.");
+        return;
       }
+
+      const reviewData = {
+        username: "Noclip VR Player",
+        content: `Rating: ${rating.value} stars\nReview: ${reviewText}`
+      };
+
+      fetch('https://discord.com/api/webhooks/YOUR_DISCORD_WEBHOOK_URL', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reviewData)
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Thank you for your review!");
+          closeModal();
+        } else {
+          alert("There was an error submitting your review. Please try again.");
+        }
+      });
     }
   </script>
-
 </body>
 </html>
