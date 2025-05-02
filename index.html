@@ -37,9 +37,9 @@
     }
     nav {
       display: flex;
-      width: 200px;
-      justify-content: flex-start;
-      margin-right: 20px;
+      flex-grow: 1;
+      justify-content: center; /* Centering the contents */
+      align-items: center;
     }
     nav a {
       color: white;
@@ -55,7 +55,6 @@
     nav a:hover {
       background-color: red;
     }
-    /* New button for "Leave a Review" in the center */
     .review-btn {
       color: white;
       text-decoration: none;
@@ -67,8 +66,7 @@
       display: block;
       text-align: center;
       cursor: pointer;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: 20px;
     }
     .review-btn:hover {
       background-color: red;
@@ -110,7 +108,6 @@
       border-radius: 10px;
     }
 
-    /* Styling for both logos */
     .logo {
       position: absolute;
       bottom: 20px;
@@ -118,15 +115,12 @@
       height: auto;
       transition: transform 0.3s ease-in-out;
     }
-
     .discord-logo {
       left: 20px;
     }
-
     .meta-logo {
       right: 20px;
     }
-
     .logo:hover {
       transform: scale(1.2);
     }
@@ -185,6 +179,23 @@
     .modal button:hover {
       background-color: red;
     }
+    /* Star Rating */
+    .stars {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    .star {
+      width: 30px;
+      height: 30px;
+      background-color: lightgray;
+      margin: 0 5px;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      cursor: pointer;
+    }
+    .star.selected {
+      background-color: gold;
+    }
   </style>
 </head>
 <body>
@@ -232,48 +243,63 @@
     <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
   </a>
 
-  <!-- Leave a Review Modal -->
+  <!-- Review Modal -->
   <div id="reviewModal" class="modal">
     <div class="modal-content">
-      <h2>Leave a Review</h2>
-      <label for="rating">Rating (1-5):</label><br>
-      <input type="radio" id="rating1" name="rating" value="1"> 1
-      <input type="radio" id="rating2" name="rating" value="2"> 2
-      <input type="radio" id="rating3" name="rating" value="3"> 3
-      <input type="radio" id="rating4" name="rating" value="4"> 4
-      <input type="radio" id="rating5" name="rating" value="5"> 5
-      <br><br>
-      <label for="review">Your Review:</label><br>
-      <textarea id="review" rows="4" placeholder="Write your review..."></textarea><br><br>
-      <button onclick="submitReview()">Submit Review</button>
-      <button onclick="closeModal()">Close</button>
+      <h3>Leave a Review</h3>
+      <p>Tell us what you think about Noclip VR:</p>
+      
+      <!-- Star Rating -->
+      <div class="stars" id="starRating">
+        <div class="star" data-value="1"></div>
+        <div class="star" data-value="2"></div>
+        <div class="star" data-value="3"></div>
+        <div class="star" data-value="4"></div>
+        <div class="star" data-value="5"></div>
+      </div>
+      
+      <textarea placeholder="Write your review here..." rows="4"></textarea>
+      <button id="submitReview">Submit Review</button>
+      <button id="closeModal">Cancel</button>
     </div>
   </div>
 
   <script>
-    // Open the review modal
-    document.getElementById('leaveReviewBtn').onclick = function() {
-      document.getElementById('reviewModal').style.display = 'flex';
-    };
+    // Opening the modal
+    const leaveReviewBtn = document.getElementById('leaveReviewBtn');
+    const reviewModal = document.getElementById('reviewModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    
+    leaveReviewBtn.addEventListener('click', () => {
+      reviewModal.style.display = 'flex';
+    });
+    
+    closeModalBtn.addEventListener('click', () => {
+      reviewModal.style.display = 'none';
+    });
 
-    // Close the modal
-    function closeModal() {
-      document.getElementById('reviewModal').style.display = 'none';
-    }
+    // Star Rating functionality
+    const stars = document.querySelectorAll('.star');
+    let selectedRating = 0;
+    
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = star.getAttribute('data-value');
+        stars.forEach(star => {
+          if (star.getAttribute('data-value') <= selectedRating) {
+            star.classList.add('selected');
+          } else {
+            star.classList.remove('selected');
+          }
+        });
+      });
+    });
 
-    // Submit review
-    function submitReview() {
-      const rating = document.querySelector('input[name="rating"]:checked');
-      const reviewText = document.querySelector('textarea').value;
-
-      if (!rating || !reviewText) {
-        alert("Please provide a rating and review.");
-        return;
-      }
-
-      alert("Thank you for your review!");
-      closeModal(); // Close the modal after submission
-    }
+    // Submit Review
+    document.getElementById('submitReview').addEventListener('click', () => {
+      alert('Review Submitted! Rating: ' + selectedRating);
+      reviewModal.style.display = 'none';
+    });
   </script>
 </body>
 </html>
