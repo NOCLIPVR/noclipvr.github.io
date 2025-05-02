@@ -297,11 +297,17 @@
             }
         });
 
-        // Highlight the stars when hovered and selected
+        // Make stars stay colored once clicked
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                stars.forEach(s => s.classList.remove('selected'));
-                star.classList.add('selected');
+                // Color all stars up to the clicked one
+                stars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-value')) <= parseInt(star.getAttribute('data-value'))) {
+                        s.classList.add('selected');
+                    } else {
+                        s.classList.remove('selected');
+                    }
+                });
             });
         });
 
