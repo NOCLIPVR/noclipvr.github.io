@@ -22,8 +22,13 @@
       padding: 10px 20px;
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    header .branding {
+      display: flex;
       align-items: center;
+      gap: 10px;
     }
 
     header h1 {
@@ -38,8 +43,27 @@
       color: white;
     }
 
-    nav {
+    nav.navbar {
       display: flex;
+      align-items: center;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .nav-left {
+      flex: 1;
+    }
+
+    .nav-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
       gap: 10px;
     }
 
@@ -50,6 +74,7 @@
       background-color: black;
       border-radius: 5px;
       font-weight: bold;
+      text-align: center;
       cursor: pointer;
     }
 
@@ -58,7 +83,7 @@
     }
 
     .content {
-      padding: 140px 20px 40px;
+      padding: 160px 20px 40px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
@@ -86,7 +111,14 @@
       line-height: 1.6;
     }
 
-    .content img, .content video {
+    .content img {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+
+    .content video {
       width: 100%;
       max-width: 800px;
       margin: 20px 0;
@@ -125,8 +157,13 @@
         margin-bottom: 10px;
       }
 
-      nav {
-        flex-wrap: wrap;
+      nav.navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-left, .nav-center, .nav-right {
+        flex: unset;
         justify-content: center;
       }
     }
@@ -134,8 +171,10 @@
     .modal {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-color: rgba(0, 0, 0, 0.7);
       justify-content: center;
       align-items: center;
@@ -147,6 +186,7 @@
       border-radius: 10px;
       width: 400px;
       text-align: center;
+      box-sizing: border-box;
       position: relative;
     }
 
@@ -157,6 +197,7 @@
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      box-sizing: border-box;
     }
 
     .modal button {
@@ -204,113 +245,29 @@
   </style>
 </head>
 <body>
-
-  <!-- Header Bar -->
   <header>
-    <div style="display: flex; align-items: center; gap: 10px;">
+    <div class="branding">
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="staff.html">Staff</a>
-      <a href="levels.html">Levels</a>
-      <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
+    <nav class="navbar">
+      <div class="nav-left"></div>
+      <div class="nav-center">
+        <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
+      </div>
+      <div class="nav-right">
+        <a href="staff.html">Staff</a>
+        <a href="levels.html">Levels</a>
+      </div>
     </nav>
   </header>
 
-  <!-- Main Content -->
   <div class="content">
     <h1><span>NOCLIP</span> VR</h1>
     <video controls>
-      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4" type="video/mp4">
+      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+
     <h2>A Multiplayer Horror Experience</h2>
-    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png" alt="Noclip VR Screenshot">
-    <p>
-      Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
-      <br><br>
-      Invite your friends and noclip out of the frontrooms now!
-      <br><br>
-      "If you're not careful and noclip out of reality in the wrong areas, you'll end up in the Backrooms..."
-    </p>
-  </div>
 
-  <!-- Logos -->
-  <a href="https://discord.gg/noclipvr" target="_blank">
-    <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
-  </a>
-
-  <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
-    <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
-  </a>
-
-  <!-- Review Modal -->
-  <div id="reviewModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeModal">&times;</span>
-      <h2>Leave a Review</h2>
-      <div class="stars" id="starRating">
-        <div class="star" data-value="1"></div>
-        <div class="star" data-value="2"></div>
-        <div class="star" data-value="3"></div>
-        <div class="star" data-value="4"></div>
-        <div class="star" data-value="5"></div>
-      </div>
-      <textarea id="reviewText" placeholder="Write your review here..." rows="5"></textarea>
-      <button id="submitReview">Submit Review</button>
-    </div>
-  </div>
-
-  <!-- JS Logic -->
-  <script>
-    const reviewBtn = document.getElementById("leaveReviewBtn");
-    const reviewModal = document.getElementById("reviewModal");
-    const stars = document.querySelectorAll(".star");
-    const submitReview = document.getElementById("submitReview");
-    const reviewText = document.getElementById("reviewText");
-    const closeModal = document.getElementById("closeModal");
-
-    reviewBtn.onclick = () => {
-      reviewModal.style.display = "flex";
-    };
-
-    closeModal.onclick = () => {
-      reviewModal.style.display = "none";
-    };
-
-    window.onclick = (event) => {
-      if (event.target === reviewModal) {
-        reviewModal.style.display = "none";
-      }
-    };
-
-    stars.forEach(star => {
-      star.addEventListener("click", () => {
-        const ratingValue = star.getAttribute("data-value");
-        stars.forEach(s => {
-          if (s.getAttribute("data-value") <= ratingValue) {
-            s.classList.add("selected");
-          } else {
-            s.classList.remove("selected");
-          }
-        });
-      });
-    });
-
-    submitReview.addEventListener("click", () => {
-      const rating = Array.from(stars).filter(star => star.classList.contains("selected")).length;
-      const reviewContent = reviewText.value.trim();
-
-      if (rating && reviewContent) {
-        alert(`Thank you for your review! Rating: ${rating} stars`);
-        reviewModal.style.display = "none";
-        reviewText.value = '';
-        stars.forEach(s => s.classList.remove("selected"));
-      } else {
-        alert("Please provide both a rating and a review.");
-      }
-    });
-  </script>
-</body>
-</html>
+    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a
