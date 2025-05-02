@@ -29,6 +29,132 @@
         text-align: center;
         z-index: 1000;
       }
+
+      .press-me-button {
+        display: none; /* Hide the "Press Me" button on PC */
+      }
+    }
+
+    /* Mobile & Tablet Styles */
+    @media (max-width: 1024px) {
+      .staff-grid {
+        padding-bottom: 100px; /* Ensure space for the "Press Me" button at the bottom */
+      }
+
+      .press-me-button {
+        display: block;
+        width: 100%;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .press-me-button:hover {
+        background-color: darkred;
+      }
+
+      .eerie-figure {
+        display: none; /* Hide the eerie figure on mobile */
+      }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: black;
+      padding: 10px 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: red;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 24px;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      width: 200px;
+      justify-content: flex-start;
+      margin-right
+
+
+You said:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff - Noclip VR</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://cdn.discordapp.com/attachments/1222997344690372628/1367567914038726686/Screenshot_2025-05-01_192349.png?ex=68150e5e&is=6813bcde&hm=f415a8e3f63e61c3c8c3340562ff0f2ea3dc502f92a5cf0af8dec26ab7f3a58b&') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      overflow-x: hidden;
+      height: 100%;
+    }
+
+    /* PC Only Styles */
+    @media (min-width: 1025px) {
+      .eerie-figure {
+        position: fixed;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        z-index: 1000;
+      }
+    }
+
+    /* Mobile & Tablet Styles */
+    @media (max-width: 1024px) {
+      .staff-grid {
+        padding-bottom: 100px; /* Ensure space for the "Press Me" button at the bottom */
+      }
+
+      .press-me-button {
+        display: block;
+        width: 100%;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+      }
+      
+      .press-me-button:hover {
+        background-color: darkred;
+      }
     }
 
     header {
@@ -189,6 +315,9 @@
         </ul>
       </div>
     </div>
+
+    <!-- Mobile Only Press Me Button -->
+    <button id="pressMeButton" class="press-me-button" style="display:none;">Press Me</button>
   </div>
 
   <!-- Add the audio element to play the sound -->
@@ -202,8 +331,11 @@
       audio.play(); // Play the audio
     }
 
-    // Add logic to trigger the sound elsewhere if needed (e.g., on hover or click of the eerie figure)
-    document.querySelector('.eerie-figure').addEventListener('click', playSound);
+    // Show the "Press Me" button only on mobile devices
+    if (window.innerWidth <= 1024) {
+      document.getElementById('pressMeButton').style.display = 'block';
+      document.getElementById('pressMeButton').addEventListener('click', playSound);
+    }
   </script>
 </body>
 </html>
