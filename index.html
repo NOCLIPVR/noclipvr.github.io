@@ -12,21 +12,18 @@
       background-size: cover;
       color: white;
       overflow-x: hidden;
-      padding-top: 80px; /* Avoid overlap with fixed header */
     }
 
-    /* Unified Header Style */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: black;
-      padding: 10px 0;
+      padding: 10px 20px;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
     }
 
     header h1 {
@@ -46,26 +43,22 @@
       gap: 10px;
     }
 
-    nav a,
-    .review-btn {
+    nav a, .review-btn {
       color: white;
       text-decoration: none;
       padding: 10px 20px;
       background-color: black;
       border-radius: 5px;
       font-weight: bold;
-      display: block;
-      text-align: center;
       cursor: pointer;
     }
 
-    nav a:hover,
-    .review-btn:hover {
+    nav a:hover, .review-btn:hover {
       background-color: red;
     }
 
     .content {
-      padding: 40px 20px;
+      padding: 140px 20px 40px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
@@ -93,14 +86,7 @@
       line-height: 1.6;
     }
 
-    .content img {
-      width: 100%;
-      max-width: 500px;
-      margin: 20px 0;
-      border-radius: 10px;
-    }
-
-    .content video {
+    .content img, .content video {
       width: 100%;
       max-width: 800px;
       margin: 20px 0;
@@ -138,15 +124,18 @@
       .discord-logo, .meta-logo {
         margin-bottom: 10px;
       }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
 
     .modal {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-color: rgba(0, 0, 0, 0.7);
       justify-content: center;
       align-items: center;
@@ -158,7 +147,6 @@
       border-radius: 10px;
       width: 400px;
       text-align: center;
-      box-sizing: border-box;
       position: relative;
     }
 
@@ -169,7 +157,6 @@
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      box-sizing: border-box;
     }
 
     .modal button {
@@ -218,9 +205,9 @@
 </head>
 <body>
 
-  <!-- Unified Header Bar -->
+  <!-- Header Bar -->
   <header>
-    <div style="display: flex; gap: 10px; align-items: center;">
+    <div style="display: flex; align-items: center; gap: 10px;">
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
     <nav>
@@ -234,15 +221,12 @@
   <!-- Main Content -->
   <div class="content">
     <h1><span>NOCLIP</span> VR</h1>
-
     <video controls>
       <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-
     <h2>A Multiplayer Horror Experience</h2>
-
-    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png" alt="Noclip VR Game Screenshot">
+    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png" alt="Noclip VR Screenshot">
     <p>
       Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
       <br><br>
@@ -252,12 +236,11 @@
     </p>
   </div>
 
-  <!-- Discord Logo -->
+  <!-- Logos -->
   <a href="https://discord.gg/noclipvr" target="_blank">
     <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
   </a>
 
-  <!-- Meta Logo -->
   <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
     <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
   </a>
@@ -279,48 +262,55 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- JS Logic -->
   <script>
     const reviewBtn = document.getElementById("leaveReviewBtn");
     const reviewModal = document.getElementById("reviewModal");
-    const closeModal = document.getElementById("closeModal");
     const stars = document.querySelectorAll(".star");
-    let selectedRating = 0;
+    const submitReview = document.getElementById("submitReview");
+    const reviewText = document.getElementById("reviewText");
+    const closeModal = document.getElementById("closeModal");
 
-    reviewBtn.addEventListener("click", () => {
+    reviewBtn.onclick = () => {
       reviewModal.style.display = "flex";
-    });
+    };
 
-    closeModal.addEventListener("click", () => {
+    closeModal.onclick = () => {
       reviewModal.style.display = "none";
-    });
+    };
+
+    window.onclick = (event) => {
+      if (event.target === reviewModal) {
+        reviewModal.style.display = "none";
+      }
+    };
 
     stars.forEach(star => {
       star.addEventListener("click", () => {
-        selectedRating = parseInt(star.dataset.value);
-        stars.forEach(s => s.classList.remove("selected"));
-        for (let i = 0; i < selectedRating; i++) {
-          stars[i].classList.add("selected");
-        }
+        const ratingValue = star.getAttribute("data-value");
+        stars.forEach(s => {
+          if (s.getAttribute("data-value") <= ratingValue) {
+            s.classList.add("selected");
+          } else {
+            s.classList.remove("selected");
+          }
+        });
       });
     });
 
-    document.getElementById("submitReview").addEventListener("click", () => {
-      const reviewText = document.getElementById("reviewText").value;
-      if (selectedRating === 0 || reviewText.trim() === "") {
-        alert("Please provide a star rating and a written review.");
-        return;
-      }
-      console.log("Review submitted:", selectedRating, reviewText);
-      alert("Thank you for your review!");
-      reviewModal.style.display = "none";
-    });
+    submitReview.addEventListener("click", () => {
+      const rating = Array.from(stars).filter(star => star.classList.contains("selected")).length;
+      const reviewContent = reviewText.value.trim();
 
-    window.onclick = function(event) {
-      if (event.target == reviewModal) {
+      if (rating && reviewContent) {
+        alert(`Thank you for your review! Rating: ${rating} stars`);
         reviewModal.style.display = "none";
+        reviewText.value = '';
+        stars.forEach(s => s.classList.remove("selected"));
+      } else {
+        alert("Please provide both a rating and a review.");
       }
-    }
+    });
   </script>
 </body>
 </html>
