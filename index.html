@@ -64,11 +64,21 @@
             background-color: red;
         }
 
-        /* New CSS for centering the "Leave a Review" button */
-        #leaveReviewBtn {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Centered Leave a Review Button */
+        .centered-button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .centered-button:hover {
+            background-color: red;
         }
 
         .content {
@@ -200,6 +210,7 @@
             background-color: red;
         }
 
+        /* Stars */
         .stars {
             display: flex;
             justify-content: center;
@@ -227,6 +238,7 @@
             cursor: pointer;
             color: black;
         }
+
     </style>
 </head>
 <body>
@@ -238,8 +250,8 @@
         <nav>
             <a href="levels.html">Levels</a>
             <a href="staff.html">Staff</a>
+            <a href="javascript:void(0)" id="leaveReviewBtn" class="centered-button">Leave a Review</a>
         </nav>
-        <a href="javascript:void(0)" id="leaveReviewBtn">Leave a Review</a> <!-- Centered Button -->
     </header>
 
     <!-- Main Content Section -->
@@ -309,11 +321,18 @@
             }
         });
 
-        // Highlight the stars when hovered and selected
+        // Highlight the stars when clicked
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                stars.forEach(s => s.classList.add('selected'));
-                star.classList.add('selected');
+                stars.forEach(s => s.classList.remove('selected'));  // Remove selection from all stars
+                star.classList.add('selected');  // Select the clicked star
+                let currentStarValue = star.getAttribute('data-value');
+                // Color the stars up to the selected star
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= currentStarValue) {
+                        s.classList.add('selected');
+                    }
+                });
             });
         });
     </script>
