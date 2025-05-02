@@ -305,10 +305,17 @@
         // Highlight the stars when clicked
         stars.forEach(star => {
             star.addEventListener('click', () => {
-                // Reset the selected state of all stars
+                const clickedValue = parseInt(star.getAttribute('data-value'));
+                
+                // Reset all stars to unselected state
                 stars.forEach(s => s.classList.remove('selected'));
-                // Add the selected state to the clicked star
-                star.classList.add('selected');
+
+                // Apply the selected class to all stars up to the clicked star
+                stars.forEach((s, index) => {
+                    if (index < clickedValue) {
+                        s.classList.add('selected');
+                    }
+                });
             });
         });
     </script>
