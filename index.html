@@ -22,7 +22,6 @@
       padding: 10px 20px;
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
       align-items: center;
     }
 
@@ -36,6 +35,16 @@
       margin: 0;
       font-size: 24px;
       color: white;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .center-btn {
+      flex: 1;
+      text-align: center;
     }
 
     nav {
@@ -137,6 +146,19 @@
         flex-direction: column;
         gap: 10px;
       }
+
+      header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .center-btn {
+        margin: 10px 0;
+      }
+
+      nav {
+        justify-content: center;
+      }
     }
 
     /* Modal */
@@ -217,29 +239,33 @@
   </style>
 </head>
 <body>
-  <!-- Header from Staff Page -->
+
+  <!-- Updated Header -->
   <header>
-    <div>
+    <div class="logo-title">
       <h1>NOCLIP</h1><h2>VR</h2>
+    </div>
+    <div class="center-btn">
+      <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
     </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="levels.html">Levels</a>
       <a href="staff.html">Staff</a>
-      <a href="#" class="review-btn" id="leaveReviewBtn">Leave a Review</a>
     </nav>
   </header>
 
+  <!-- Main Content -->
   <div class="content">
     <h1><span>NOCLIP</span> VR</h1>
     <video controls>
-      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
+      <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?..." type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <h2>A Multiplayer Horror Experience</h2>
 
-    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
+    <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png" alt="Noclip VR Game Screenshot">
 
     <p>
       Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
@@ -266,55 +292,47 @@
     <div class="modal-content">
       <span class="close-btn" id="closeModal">&times;</span>
       <h2>Leave a Review</h2>
-      <div class="stars" id="starRating">
+      <input type="text" id="name" placeholder="Your Name">
+      <textarea id="review" placeholder="Your Review"></textarea>
+      <div class="stars" id="starsContainer">
         <div class="star" data-value="1"></div>
         <div class="star" data-value="2"></div>
         <div class="star" data-value="3"></div>
         <div class="star" data-value="4"></div>
         <div class="star" data-value="5"></div>
       </div>
-      <textarea id="reviewText" placeholder="Write your review here..." rows="5"></textarea>
-      <button id="submitReview">Submit Review</button>
+      <button onclick="submitReview()">Submit</button>
     </div>
   </div>
 
   <script>
-    const reviewBtn = document.getElementById("leaveReviewBtn");
-    const reviewModal = document.getElementById("reviewModal");
-    const starRating = document.getElementById("starRating");
-    const stars = starRating.getElementsByClassName("star");
-    const submitReview = document.getElementById("submitReview");
-    const reviewText = document.getElementById("reviewText");
-    const closeModal = document.getElementById("closeModal");
+    const modal = document.getElementById("reviewModal");
+    const btn = document.getElementById("leaveReviewBtn");
+    const closeBtn = document.getElementById("closeModal");
+    const stars = document.querySelectorAll(".star");
 
-    reviewBtn.onclick = () => {
-      reviewModal.style.display = "flex";
+    btn.onclick = () => modal.style.display = "flex";
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
     };
 
-    closeModal.onclick = () => {
-      reviewModal.style.display = "none";
-    };
-
-    Array.from(stars).forEach(star => {
-      star.onclick = () => {
-        const value = star.getAttribute("data-value");
-        Array.from(stars).forEach(s => s.classList.remove("selected"));
-        for (let i = 0; i < value; i++) {
-          stars[i].classList.add("selected");
-        }
-      };
+    stars.forEach(star => {
+      star.addEventListener("click", () => {
+        const value = parseInt(star.getAttribute("data-value"));
+        stars.forEach(s => {
+          s.classList.toggle("selected", parseInt(s.getAttribute("data-value")) <= value);
+        });
+      });
     });
 
-    submitReview.onclick = () => {
-      const rating = Array.from(stars).filter(star => star.classList.contains("selected")).length;
-      const review = reviewText.value;
-      if (rating === 0 || review.trim() === "") {
-        alert("Please provide a rating and a review.");
-        return;
-      }
-      alert(`Thank you for your review!\nRating: ${rating} stars\nReview: ${review}`);
-      reviewModal.style.display = "none";
-    };
+    function submitReview() {
+      const name = document.getElementById("name").value;
+      const review = document.getElementById("review").value;
+      const rating = document.querySelectorAll(".star.selected").length;
+      alert(`Thank you for your review, ${name}!\nRating: ${rating} stars\nReview: ${review}`);
+      modal.style.display = "none";
+    }
   </script>
 </body>
 </html>
