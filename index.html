@@ -249,6 +249,22 @@
             color: black;
         }
 
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            margin: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -310,6 +326,11 @@
         </div>
     </div>
 
+    <!-- Footer Section -->
+    <footer>
+        <p>Website created by §</p>
+    </footer>
+
     <script>
         const leaveReviewBtn = document.getElementById('leaveReviewBtn');
         const reviewModal = document.getElementById('reviewModal');
@@ -368,7 +389,7 @@
 
                 // Create the message payload
                 const message = {
-                    content: **New Review for NOCLIP VR**\nName: ${reviewerName || 'Anonymous'}\nRating: ${selectedRating} stars\nReview: ${reviewText}
+                    content: `**New Review for NOCLIP VR**\nName: ${reviewerName || 'Anonymous'}\nRating: ${selectedRating} stars\nReview: ${reviewText}`
                 };
 
                 // Send the message to Discord
@@ -408,4 +429,4 @@
         }
     </script>
 </body>
-</html> 
+</html>
