@@ -17,13 +17,15 @@
         header {
             position: fixed;
             top: 0;
-            width: 100%;
+            width: 90%; /* Adjusted from 100% to 90% */
+            max-width: 1200px; /* Optional: Set a maximum width to prevent it from becoming too narrow */
             background-color: black;
             padding: 10px 20px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin: 0 auto; /* Centers the header */
         }
 
         header h1 {
@@ -49,28 +51,13 @@
             gap: 10px;
             position: absolute;
             left: 20px;
-
-
-
-
-
         }
 
         nav .right {
-
-
-
-
-
-
             display: flex;
             gap: 10px;
-
             position: absolute;
             right: 20px;
-
-
-
         }
 
         nav a, .review-btn {
@@ -215,7 +202,6 @@
 
         .modal button:hover {
             background-color: red;
-
         }
 
         .stars {
@@ -235,8 +221,6 @@
 
         .star.selected {
             background-color: gold;
-
-
         }
 
         .close-btn {
@@ -310,12 +294,6 @@
             <textarea placeholder="Write your review here..." rows="4"></textarea>
             <button>Submit Review</button>
         </div>
-
-
-
-
-
-
     </div>
 
     <script>
