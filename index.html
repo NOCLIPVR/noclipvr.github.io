@@ -276,4 +276,55 @@
   </div>
 
   <!-- Discord logo clickable link -->
-  <a href="https://discord.gg/noclipvr"
+  <a href="https://discord.gg/noclipvr" target="_blank">
+    <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
+  </a>
+
+  <!-- Meta logo clickable link -->
+  <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
+    <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
+  </a>
+
+  <script>
+    // Open the review modal
+    document.getElementById('review-button').onclick = function() {
+      document.getElementById('review-modal').style.display = 'flex';
+    };
+
+    // Close the review modal
+    function closeModal() {
+      document.getElementById('review-modal').style.display = 'none';
+    }
+
+    // Submit the review and send it to Discord
+    function submitReview() {
+      const rating = document.querySelector('input[name="rating"]:checked');
+      const reviewText = document.querySelector('textarea').value;
+
+      if (!rating || !reviewText) {
+        alert("Please provide a rating and review.");
+        return;
+      }
+
+      const reviewData = {
+        username: "Noclip VR Player",
+        content: `Rating: ${rating.value} stars\nReview: ${reviewText}`
+      };
+
+      fetch('https://discord.com/api/webhooks/YOUR_DISCORD_WEBHOOK_URL', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reviewData)
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Thank you for your review!");
+          closeModal();
+        } else {
+          alert("There was an error submitting your review. Please try again.");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
