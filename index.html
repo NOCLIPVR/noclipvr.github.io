@@ -73,6 +73,35 @@
       background-color: red;
     }
 
+    /* Modal Styles */
+    #reviewModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+    }
+    #reviewModal .modal-content {
+      background-color: white;
+      color: black;
+      padding: 20px;
+      width: 400px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #reviewModal .stars {
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .star-selected {
+      color: gold;
+    }
+
     .content {
       padding: 120px 20px 40px;
       max-width: 1000px;
@@ -160,6 +189,25 @@
     <button id="review-button">Leave a Review</button>
   </header>
 
+  <!-- Modal for Review Form -->
+  <div id="reviewModal">
+    <div class="modal-content">
+      <h3>Leave a Review</h3>
+      <p>Please rate the game:</p>
+      <div id="stars" class="stars">
+        <span data-star="1">&#9733;</span>
+        <span data-star="2">&#9733;</span>
+        <span data-star="3">&#9733;</span>
+        <span data-star="4">&#9733;</span>
+        <span data-star="5">&#9733;</span>
+      </div>
+      <textarea id="review-text" rows="4" placeholder="Write your review here..."></textarea>
+      <br><br>
+      <button id="submit-review">Submit Review</button>
+      <button id="close-modal">Close</button>
+    </div>
+  </div>
+
   <div class="content">
     <h1><span>NOCLIP</span> VR</h1>
 
@@ -191,6 +239,62 @@
   <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
     <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
   </a>
+
+  <script>
+    // Open review modal
+    document.getElementById('review-button').addEventListener('click', function() {
+      document.getElementById('reviewModal').style.display = 'flex';
+    });
+
+    // Close the modal
+    document.getElementById('close-modal').addEventListener('click', function() {
+      document.getElementById('reviewModal').style.display = 'none';
+    });
+
+    let selectedRating = 0;
+
+    // Select star rating
+    document.querySelectorAll('#stars span').forEach(function(star) {
+      star.addEventListener('click', function() {
+        selectedRating = this.getAttribute('data-star');
+        document.querySelectorAll('#stars span').forEach(function(s) {
+          if (s.getAttribute('data-star') <= selectedRating) {
+            s.classList.add('star-selected');
+          } else {
+            s.classList.remove('star-selected');
+          }
+        });
+      });
+    });
+
+    // Submit review and send data to Discord webhook
+    document.getElementById('submit-review').addEventListener('click', function() {
+      const reviewText = document.getElementById('review-text').value;
+
+      if (selectedRating > 0 && reviewText) {
+        const reviewData = {
+          content: `New Review for Noclip VR:\nRating: ${selectedRating} stars\nReview: ${reviewText}`
+        };
+
+        fetch('YOUR_DISCORD_WEBHOOK_URL', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(reviewData)
+        }).then(response => {
+          if (response.ok) {
+            alert('Review submitted successfully!');
+            document.getElementById('reviewModal').style.display = 'none';
+          } else {
+            alert('There was an error submitting your review.');
+          }
+        });
+      } else {
+        alert('Please provide both a rating and a review.');
+      }
+    });
+  </script>
 
 </body>
 </html>
