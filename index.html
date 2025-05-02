@@ -42,7 +42,7 @@
             display: flex;
             gap: 10px;
             flex-grow: 1;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
         }
 
@@ -327,11 +327,6 @@
                 });
             });
         });
-
-        // Check if the current page is index.html
-        if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
-            document.getElementById('homeLink').style.display = 'none';
-        }
     </script>
 </body>
 </html>
