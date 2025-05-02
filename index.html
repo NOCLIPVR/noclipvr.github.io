@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Noclip VR</title>
   <style>
     body {
@@ -13,103 +13,111 @@
       color: white;
       overflow-x: hidden;
     }
+
     header {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: black;
-      padding: 10px 0;
+      padding: 10px 20px;
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
+      flex-direction: column;
     }
+
+    header .branding {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     header h1 {
       margin: 0;
       font-size: 24px;
       color: red;
     }
+
     header h2 {
       margin: 0;
       font-size: 24px;
       color: white;
     }
-    nav {
+
+    nav.navbar {
       display: flex;
-      justify-content: center; /* Centering the review button */
       align-items: center;
-      flex-grow: 1;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      background-color: black;
-      margin: 0;
-      border-radius: 5px;
-      font-weight: bold;
-      display: block;
-      text-align: center;
-    }
-    nav a:hover {
-      background-color: red;
-    }
-    .review-btn {
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      background-color: black;
-      margin: 0;
-      border-radius: 5px;
-      font-weight: bold;
-      display: block;
-      text-align: center;
-      cursor: pointer;
-      margin-left: 20px;
-    }
-    .review-btn:hover {
-      background-color: red;
+      width: 100%;
+      margin-top: 10px;
     }
 
-    /* Move Staff & Levels links to the right */
-    header .nav-right {
-      margin-left: auto;
+    .nav-left {
+      flex: 1;
+    }
+
+    .nav-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-right {
+      flex: 1;
       display: flex;
       justify-content: flex-end;
-      align-items: center;
+      gap: 10px;
+    }
+
+    nav a, .review-btn {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: black;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    nav a:hover, .review-btn:hover {
+      background-color: red;
     }
 
     .content {
-      padding: 120px 20px 40px;
+      padding: 160px 20px 40px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
     }
+
     .content h1 {
       font-size: 60px;
       margin-bottom: 20px;
       text-transform: uppercase;
       -webkit-text-stroke: 2px black;
     }
+
     .content h1 span {
       color: red;
     }
+
     .content h2 {
       font-size: 32px;
       margin-bottom: 20px;
       color: black;
     }
+
     .content p {
       font-size: 18px;
       line-height: 1.6;
     }
+
     .content img {
       width: 100%;
       max-width: 500px;
       margin: 20px 0;
       border-radius: 10px;
     }
+
     .content video {
       width: 100%;
       max-width: 800px;
@@ -124,17 +132,19 @@
       height: auto;
       transition: transform 0.3s ease-in-out;
     }
+
     .discord-logo {
       left: 20px;
     }
+
     .meta-logo {
       right: 20px;
     }
+
     .logo:hover {
       transform: scale(1.2);
     }
 
-    /* MOBILE & TABLET STYLES */
     @media only screen and (max-width: 768px) {
       .logo {
         position: static;
@@ -146,9 +156,18 @@
       .discord-logo, .meta-logo {
         margin-bottom: 10px;
       }
+
+      nav.navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-left, .nav-center, .nav-right {
+        flex: unset;
+        justify-content: center;
+      }
     }
 
-    /* Modal Styles */
     .modal {
       display: none;
       position: fixed;
@@ -160,15 +179,17 @@
       justify-content: center;
       align-items: center;
     }
+
     .modal-content {
       background-color: white;
       padding: 30px;
       border-radius: 10px;
-      width: 400px; /* Wider modal */
+      width: 400px;
       text-align: center;
       box-sizing: border-box;
       position: relative;
     }
+
     .modal input, .modal textarea {
       width: 100%;
       margin: 10px 0;
@@ -178,6 +199,7 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
+
     .modal button {
       background-color: black;
       color: white;
@@ -188,16 +210,17 @@
       border-radius: 5px;
       width: 100%;
     }
+
     .modal button:hover {
       background-color: red;
     }
 
-    /* Star Rating */
     .stars {
       display: flex;
       justify-content: center;
       margin: 20px 0;
     }
+
     .star {
       width: 40px;
       height: 40px;
@@ -206,11 +229,11 @@
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
       cursor: pointer;
     }
+
     .star.selected {
       background-color: gold;
     }
 
-    /* Close button for the modal */
     .close-btn {
       position: absolute;
       top: 10px;
@@ -223,11 +246,14 @@
 </head>
 <body>
   <header>
-    <div>
+    <div class="branding">
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
-    <nav>
-      <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
+    <nav class="navbar">
+      <div class="nav-left"></div>
+      <div class="nav-center">
+        <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
+      </div>
       <div class="nav-right">
         <a href="staff.html">Staff</a>
         <a href="levels.html">Levels</a>
@@ -237,7 +263,6 @@
 
   <div class="content">
     <h1><span>NOCLIP</span> VR</h1>
-
     <video controls>
       <source src="https://video.fgla3-2.fna.fbcdn.net/o1/v/t2/f2/m69/AQPTfQKWvryiee4VrBi3c2Ddmr7d0ReZyFrZfNpJVEH2ACdK4ORWlFN2q0BkiPp2qVn7QUMuvODslDpeS581w7GN.mp4?strext=1&_nc_cat=107&_nc_oc=AdmoKm-_GSO7cq0XsAAM_ZX1vw02-Dp2ZOY4OLcya3XcausV5H-28LabKWFr4XQNeik&_nc_sid=8bf8fe&_nc_ht=video.fgla3-2.fna.fbcdn.net&_nc_ohc=w2GnmAWkhAMQ7kNvwG5xXfc&efg=eyJ2ZW5jb2xlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NTcyNzYyMDQxODcxMzE2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMywiZHVyYXRpb25fcyI6NTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfEsxYiDKlU5IQaY9EhBYvx0GK9PZCfLX4fxVE5cF0Qsvw&oe=68185A6F" type="video/mp4">
       Your browser does not support the video tag.
@@ -246,6 +271,7 @@
     <h2>A Multiplayer Horror Experience</h2>
 
     <img src="https://media.discordapp.net/attachments/1284740231941066825/1367233293027643596/image.png?ex=6813d6bb&is=6812853b&hm=050eb7416f4f07a5a2a350961069d9e32591ba0a27c1d4e6c8a93634f0bd038b&=&format=webp&quality=lossless" alt="Noclip VR Game Screenshot">
+
     <p>
       Noclip VR is a multiplayer horror game with unique locomotion and proximity chat! The game features many unique levels with different puzzles and entities.
       <br><br>
@@ -257,17 +283,16 @@
     </p>
   </div>
 
-  <!-- Discord logo clickable link -->
+  <!-- Logos -->
   <a href="https://discord.gg/noclipvr" target="_blank">
     <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="logo discord-logo">
   </a>
 
-  <!-- Meta logo clickable link -->
   <a href="https://www.meta.com/en-gb/experiences/noclip-vr/5407386572706843/" target="_blank">
     <img src="https://pngimg.com/uploads/meta/meta_PNG4.png" alt="Meta Logo" class="logo meta-logo">
   </a>
 
-  <!-- Review Modal -->
+  <!-- Modal -->
   <div id="reviewModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" id="closeModal">&times;</span>
@@ -293,24 +318,20 @@
     const reviewText = document.getElementById("reviewText");
     const closeModal = document.getElementById("closeModal");
 
-    // Open the review modal
     reviewBtn.onclick = () => {
       reviewModal.style.display = "flex";
     };
 
-    // Close the review modal when clicking the close button
     closeModal.onclick = () => {
       reviewModal.style.display = "none";
     };
 
-    // Close the review modal when clicking outside the modal
     window.onclick = (event) => {
       if (event.target === reviewModal) {
         reviewModal.style.display = "none";
       }
     };
 
-    // Handle star rating selection
     Array.from(stars).forEach(star => {
       star.addEventListener("click", () => {
         const ratingValue = star.getAttribute("data-value");
@@ -324,7 +345,6 @@
       });
     });
 
-    // Handle review submission
     submitReview.addEventListener("click", () => {
       const rating = Array.from(stars).filter(star => star.classList.contains("selected")).length;
       const reviewContent = reviewText.value;
@@ -332,7 +352,8 @@
       if (rating && reviewContent) {
         alert(`Thank you for your review! Rating: ${rating} stars`);
         reviewModal.style.display = "none";
-        reviewText.value = ''; // Reset review text
+        reviewText.value = '';
+        Array.from(stars).forEach(s => s.classList.remove("selected"));
       } else {
         alert("Please provide both a rating and a review.");
       }
