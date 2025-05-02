@@ -37,9 +37,9 @@
     }
     nav {
       display: flex;
-      flex-grow: 1;
-      justify-content: center; /* Center the content */
+      justify-content: center; /* Centering the review button */
       align-items: center;
+      flex-grow: 1;
     }
     nav a {
       color: white;
@@ -71,6 +71,15 @@
     .review-btn:hover {
       background-color: red;
     }
+
+    /* Move Staff & Levels links to the right */
+    header .nav-right {
+      margin-left: auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
     .content {
       padding: 120px 20px 40px;
       max-width: 1000px;
@@ -182,6 +191,7 @@
     .modal button:hover {
       background-color: red;
     }
+
     /* Star Rating */
     .stars {
       display: flex;
@@ -217,10 +227,11 @@
       <h1>NOCLIP</h1><h2>VR</h2>
     </div>
     <nav>
-      <a href="staff.html">Staff</a>
-      <a href="levels.html">Levels</a>
-      <!-- Leave a Review Button in the center -->
       <span class="review-btn" id="leaveReviewBtn">Leave a Review</span>
+      <div class="nav-right">
+        <a href="staff.html">Staff</a>
+        <a href="levels.html">Levels</a>
+      </div>
     </nav>
   </header>
 
