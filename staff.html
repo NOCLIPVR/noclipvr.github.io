@@ -216,14 +216,16 @@
   <audio id="eerieSound" src="https://cdn.discordapp.com/attachments/1222997344690372628/1367570265906872500/Untitled_video_-_Made_with_Clipchamp_8.mp4?ex=6815108f&is=6813bf0f&hm=24ab74b7fb760fd9f0b0fedba95d5b87949b8ba00a649cb54dde9e59930b7e14&" preload="auto"></audio>
 
   <!-- Eerie "Press Me" text for both PC and Mobile -->
-  <div class="eerie-figure" onclick="playSound()">Press Me</div>
+  <div class="eerie-figure" id="pressButton">Press Me</div>
 
   <script>
     // JavaScript function to play the sound when the eerie figure is clicked
-    function playSound() {
+    document.getElementById('pressButton').addEventListener('click', function() {
       var audio = document.getElementById('eerieSound');
-      audio.play();  // Play the audio when the button is clicked
-    }
+      audio.play().catch(function(error) {
+        console.log("Error playing audio: ", error);
+      });
+    });
   </script>
 
 </body>
