@@ -38,7 +38,7 @@
     nav {
       display: flex;
       flex-grow: 1;
-      justify-content: flex-end; /* Move the links to the right side */
+      justify-content: flex-end; /* Staff & Levels links on the right side */
       align-items: center;
     }
     nav a {
@@ -158,6 +158,7 @@
       width: 400px; /* Wider modal */
       text-align: center;
       box-sizing: border-box;
+      position: relative;
     }
     .modal input, .modal textarea {
       width: 100%;
@@ -197,6 +198,16 @@
     }
     .star.selected {
       background-color: gold;
+    }
+
+    /* Close button for the modal */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 30px;
+      cursor: pointer;
+      color: black;
     }
   </style>
 </head>
@@ -248,10 +259,8 @@
   <!-- Review Modal -->
   <div id="reviewModal" class="modal">
     <div class="modal-content">
-      <h3>Leave a Review</h3>
-      <p>Tell us what you think about Noclip VR:</p>
-      
-      <!-- Star Rating -->
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Leave a Review</h2>
       <div class="stars" id="starRating">
         <div class="star" data-value="1"></div>
         <div class="star" data-value="2"></div>
@@ -259,7 +268,6 @@
         <div class="star" data-value="4"></div>
         <div class="star" data-value="5"></div>
       </div>
-      
       <textarea id="reviewText" placeholder="Write your review here..." rows="5"></textarea>
       <button id="submitReview">Submit Review</button>
     </div>
@@ -272,10 +280,16 @@
     const stars = starRating.getElementsByClassName("star");
     const submitReview = document.getElementById("submitReview");
     const reviewText = document.getElementById("reviewText");
+    const closeModal = document.getElementById("closeModal");
 
     // Open the review modal
     reviewBtn.onclick = () => {
       reviewModal.style.display = "flex";
+    };
+
+    // Close the review modal when clicking the close button
+    closeModal.onclick = () => {
+      reviewModal.style.display = "none";
     };
 
     // Close the review modal when clicking outside the modal
